@@ -1,0 +1,23 @@
+{ "oclsdora_email_on_guided_ingest_completion" : {
+    "LABEL" : "oclsdora_email_on_guided_ingest_completion",
+    "PLUGIN" : "reaction rule",
+    "OWNER" : "rules",
+    "REQUIRES" : [ "rules", "islandora_guided_ingest" ],
+    "ON" : { "islandora_guided_ingest_object_ingested" : [] },
+    "DO" : [
+      { "mail" : {
+          "to" : [ "site:current-user:mail" ],
+          "subject" : "[site:name] \u0022[object:label]\u0022 has been ingested",
+          "message" : "[object:label] has been submitted for review as [object:id]",
+          "language" : [ "" ]
+        }
+      },
+      { "mail_to_users_of_role" : {
+          "roles" : { "value" : { "3" : "3" } },
+          "subject" : "[site:name] \u0022[object:label]\u0022 has been ingested",
+          "message" : "[object:label] has been ingested as [object:id]"
+        }
+      }
+    ]
+  }
+}

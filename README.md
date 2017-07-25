@@ -1,15 +1,14 @@
-# MODULE NAME
+# OCLSdora
 
 ## Introduction
 
-DESCRIPTION
+Customizations for the Ontario Colleges Library Service
 
 ## Requirements
 
 This module requires the following modules/libraries:
 
 * [Islandora](https://github.com/islandora/islandora)
-* [Tuque](https://github.com/islandora/tuque)
 
 ## Installation
 
