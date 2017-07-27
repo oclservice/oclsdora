@@ -1,0 +1,7 @@
+name = "Ontario Colleges Library Service Customizations"
+description = "Customizations for the Ontario Colleges Library Service"
+package = Islandora Customizations
+core = 7.x
+version = 7.x-dev
+dependencies[] = islandora
+dependencies[] = islandora_guided_ingest
