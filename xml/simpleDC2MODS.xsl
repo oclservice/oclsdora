@@ -169,12 +169,12 @@
         </subject>
     </xsl:template>
     <xsl:template match="dc:description">
-        <!--<abstract>
+        <abstract>
             <xsl:apply-templates/>
-        </abstract>-->
-        <note>
+        </abstract>
+        <!--<note>
             <xsl:apply-templates/>
-        </note>
+        </note>-->
         <!--<tableOfContents>
             <xsl:apply-templates/>
         </tableOfContents>-->
@@ -200,18 +200,18 @@
     </xsl:template>
     <xsl:template match="dc:date">
         <originInfo>
-            <!--<dateIssued>
+            <dateIssued>
                 <xsl:apply-templates/>
-            </dateIssued>-->
+            </dateIssued>
             <!--<dateCreated>
                 <xsl:apply-templates/>
             </dateCreated>
             <dateCaptured>
                 <xsl:apply-templates/>
             </dateCaptured>-->
-            <dateOther>
+            <!--<dateOther>
                 <xsl:apply-templates/>
-            </dateOther>
+            </dateOther>-->
         </originInfo>
     </xsl:template>
     <xsl:template match="dc:type">
