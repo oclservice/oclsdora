@@ -4,3 +4,174 @@
  * @file
  * Customizations for the Ontario Colleges Library Service.
  */
+
+/**
+ * Implements hook_islandora_xml_form_builder_form_associations().
+ */
+function oclsdora_islandora_xml_form_builder_form_associations() {
+  return array(
+    'bceln_artwork_form' => array(
+      'content_model' => 'islandora:sp_large_image_cmodel',
+      'form_name' => 'BC ELN Artwork Form',
+      'dsid' => 'MODS',
+      'title_field' => array('titleInfo', 'title'),
+      'transform' => 'mods_to_dc.xsl',
+      'self_transform' => 'islandora_cleanup_mods_extended.xsl',
+      'template' => FALSE,
+    ),
+    'bceln_audio_form' => array(
+      'content_model' => 'islandora:sp-audioCModel',
+      'form_name' => 'BC ELN Audio Form',
+      'dsid' => 'MODS',
+      'title_field' => array('titleInfo', 'title'),
+      'transform' => 'mods_to_dc.xsl',
+      'self_transform' => 'islandora_cleanup_mods_extended.xsl',
+      'template' => FALSE,
+    ),
+    'bceln_basic_image_form' => array(
+      'content_model' => 'islandora:sp_basic_image',
+      'form_name' => 'BC ELN Basic Image Form',
+      'dsid' => 'MODS',
+      'title_field' => array('titleInfo', 'title'),
+      'transform' => 'mods_to_dc.xsl',
+      'self_transform' => 'islandora_cleanup_mods_extended.xsl',
+      'template' => FALSE,
+    ),
+    'bceln_citation_form' => array(
+      'content_model' => 'ir:citationCModel',
+      'form_name' => 'BC ELN Citation Form',
+      'dsid' => 'MODS',
+      'title_field' => array('titleInfo', 'title'),
+      'transform' => 'mods_to_dc.xsl',
+      'self_transform' => 'islandora_cleanup_mods_extended.xsl',
+      'template' => FALSE,
+    ),
+    'bceln_newspaper_issue_form' => array(
+      'content_model' => 'islandora:newspaperIssueCModel',
+      'form_name' => 'BC ELN Newspaper Issue Form',
+      'dsid' => 'MODS',
+      'title_field' => array('titleInfo', 'title'),
+      'transform' => 'mods_to_dc.xsl',
+      'self_transform' => 'islandora_cleanup_mods_extended.xsl',
+      'template' => FALSE,
+    ),
+    'bceln_thesis_form' => array(
+      'content_model' => 'ir:thesisCModel',
+      'form_name' => 'BC ELN Thesis Form',
+      'dsid' => 'MODS',
+      'title_field' => array('titleInfo', 'title'),
+      'transform' => 'mods_to_dc.xsl',
+      'self_transform' => 'islandora_cleanup_mods_extended.xsl',
+      'template' => FALSE,
+    ),
+    'bceln_video_form' => array(
+      'content_model' => 'islandora:sp_videoCModel',
+      'form_name' => 'BC ELN Video Form',
+      'dsid' => 'MODS',
+      'title_field' => array('titleInfo', 'title'),
+      'transform' => 'mods_to_dc.xsl',
+      'self_transform' => 'islandora_cleanup_mods_extended.xsl',
+      'template' => FALSE,
+    ),
+    'bceln_serials_form_root_serial' => array(
+      'content_model' => 'islandora:rootSerialCModel',
+      'form_name' => 'BC ELN Serials Form',
+      'dsid' => 'MODS',
+      'title_field' => array('titleInfoTab', 'titleInfoPanel', 'titleInfo'),
+      'transform' => 'mods_to_dc.xsl',
+      'self_transform' => 'islandora_cleanup_mods_extended.xsl',
+      'template' => FALSE,
+    ),
+    'bceln_serials_form_stub' => array(
+      'content_model' => 'islandora:intermediateSerialCModelStub',
+      'form_name' => 'BC ELN Serials Form',
+      'dsid' => 'MODS',
+      'title_field' => array('titleInfoTab', 'titleInfoPanel', 'titleInfo'),
+      'transform' => 'mods_to_dc.xsl',
+      'self_transform' => 'islandora_cleanup_mods_extended.xsl',
+      'template' => FALSE,
+    ),
+    'bceln_serials_form_intermediate' => array(
+      'content_model' => 'islandora:intermediateCModel',
+      'form_name' => 'BC ELN Serials Form',
+      'dsid' => 'MODS',
+      'title_field' => array('titleInfoTab', 'titleInfoPanel', 'titleInfo'),
+      'transform' => 'mods_to_dc.xsl',
+      'self_transform' => 'islandora_cleanup_mods_extended.xsl',
+      'template' => FALSE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_islandora_xml_form_builder_forms().
+ */
+function oclsdora_islandora_xml_form_builder_forms() {
+  $module_path = drupal_get_path('module', 'oclsdora');
+  return array(
+    'BC ELN Artwork Form' => array(
+      'form_file' => "$module_path/xml/bceln_artwork_form.xml",
+    ),
+    'BC ELN Audio Form' => array(
+      'form_file' => "$module_path/xml/bceln_audio_form.xml",
+    ),
+    'BC ELN Basic Image Form' => array(
+      'form_file' => "$module_path/xml/bceln_basc_image_form.xml",
+    ),
+    'BC ELN Citation Form' => array(
+      'form_file' => "$module_path/xml/bceln_citation_form.xml",
+    ),
+    'BC ELN Newspaper Issue Form' => array(
+      'form_file' => "$module_path/xml/bceln_newspaper_issue_form.xml",
+    ),
+    'BC ELN Thesis Form' => array(
+      'form_file' => "$module_path/xml/bceln_thesis_form.xml",
+    ),
+    'BC ELN Video Form' => array(
+      'form_file' => "$module_path/xml/bceln_video_form.xml",
+    ),
+    'BC ELN Serials Form' => array(
+      'form_file' => "$module_path/xml/bceln_serials_form.xml",
+    ),
+  );
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Adds autocomplete for the custom bceln citation and thesis forms.
+ */
+function oclsdora_form_xml_form_builder_datastream_form_alter(&$form, &$form_state, $form_id) {
+  if (module_exists('islandora_scholar') && module_exists('islandora_entities')) {
+    module_load_include('inc', 'islandora_entities', 'includes/utilities');
+    if (isset($form_state['association']['id'])) {
+      $id = $form_state['association']['id'];
+      if (strcmp($id, 'bceln_citation_form') == 0) {
+        islandora_entities_add_autocompletes_to_citation_form($form);
+      }
+      elseif (strcmp($id, 'bceln_thesis_form') == 0) {
+        islandora_entities_add_autocompletes_to_thesis_form($form);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Adds autocomplete for the custom bceln citation and thesis forms.
+ */
+function oclsdora_form_xml_form_builder_ingest_form_alter(&$form, &$form_state, $form_id) {
+  if (module_exists('islandora_scholar') && module_exists('islandora_entities')) {
+    module_load_include('inc', 'islandora_entities', 'includes/utilities');
+    if (isset($form_state['islandora']['step_storage']['xml_form_builder_metadata_step']['association']['id'])) {
+      $id = $form_state['islandora']['step_storage']['xml_form_builder_metadata_step']['association']['id'];
+      if (strcmp($id, 'bceln_citation_form') == 0) {
+        islandora_entities_add_autocompletes_to_citation_form($form);
+      }
+      elseif (strcmp($id, 'bceln_thesis_form') == 0) {
+        islandora_entities_add_autocompletes_to_thesis_form($form);
+      }
+    }
+  }
+}
