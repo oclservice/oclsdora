@@ -2,7 +2,7 @@
 <definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3">
   <properties>
     <root_name>mods</root_name>
-    <schema_uri>http://www.loc.gov/standards/mods/v3/mods-3-4.xsd</schema_uri>
+    <schema_uri/>
     <namespaces default="http://www.loc.gov/mods/v3">
       <namespace prefix="mods">http://www.loc.gov/mods/v3</namespace>
       <namespace prefix="xsi">http://www.w3.org/2001/XMLSchema-instance</namespace>
@@ -36,13 +36,7 @@
         <properties>
           <type>markup</type>
           <access>TRUE</access>
-          <collapsed>FALSE</collapsed>
-          <collapsible>FALSE</collapsible>
-          <disabled>FALSE</disabled>
-          <executes_submit_callback>FALSE</executes_submit_callback>
-          <multiple>FALSE</multiple>
           <required>FALSE</required>
-          <resizable>FALSE</resizable>
           <tree>TRUE</tree>
           <actions>
             <create>
@@ -66,8 +60,7 @@
             <properties>
               <type>textfield</type>
               <access>TRUE</access>
-              <description>Title of the work.</description>
-              <required>FALSE</required>
+              <required>TRUE</required>
               <title>Title</title>
               <tree>TRUE</tree>
               <actions>
@@ -150,13 +143,7 @@
             <properties>
               <type>tabpanel</type>
               <access>TRUE</access>
-              <collapsed>FALSE</collapsed>
-              <collapsible>FALSE</collapsible>
-              <disabled>FALSE</disabled>
-              <executes_submit_callback>FALSE</executes_submit_callback>
-              <multiple>FALSE</multiple>
               <required>FALSE</required>
-              <resizable>FALSE</resizable>
               <tree>TRUE</tree>
               <actions>
                 <create>
@@ -171,10 +158,7 @@
                   <path>mods:name</path>
                   <context>parent</context>
                 </read>
-                <update>
-                  <path>self::node()</path>
-                  <context>self</context>
-                </update>
+                <update>NULL</update>
                 <delete>
                   <path>self::node()</path>
                   <context>self</context>
@@ -222,8 +206,7 @@
                   <access>TRUE</access>
                   <collapsed>FALSE</collapsed>
                   <collapsible>FALSE</collapsible>
-                  <description>For personal authors: format Givenname Familyname.
-For corporate authors, use the full corporate name.</description>
+                  <description>For personal authors: format Givenname Familyname. For corporate authors, use the full corporate name.</description>
                   <disabled>FALSE</disabled>
                   <executes_submit_callback>FALSE</executes_submit_callback>
                   <multiple>FALSE</multiple>
@@ -248,7 +231,10 @@ For corporate authors, use the full corporate name.</description>
                       <path>self::node()</path>
                       <context>self</context>
                     </update>
-                    <delete>NULL</delete>
+                    <delete>
+                      <path>self::node()</path>
+                      <context>self</context>
+                    </delete>
                   </actions>
                 </properties>
                 <children/>
@@ -260,7 +246,10 @@ For corporate authors, use the full corporate name.</description>
                   <autocomplete_path>taxonomy/autocomplete/field_role_relators</autocomplete_path>
                   <collapsed>FALSE</collapsed>
                   <collapsible>FALSE</collapsible>
-                  <description>Select a role from this vocabulary - &lt;a  href="http://id.loc.gov/vocabulary/relators.html"  target="_blank"&gt;http://id.loc.gov/vocabulary/relators.html&lt;/a&gt;</description>
+                  <description>Select a role from this vocabulary -
+                                        http://id.loc.gov/vocabulary/relators.html - e.g. Artist,
+                                        Creator, Designer, Engraver, Illustrator, Photographer,
+                                        Printmaker, etc.</description>
                   <disabled>FALSE</disabled>
                   <executes_submit_callback>FALSE</executes_submit_callback>
                   <multiple>FALSE</multiple>
@@ -275,7 +264,8 @@ For corporate authors, use the full corporate name.</description>
                       <schema/>
                       <type>xml</type>
                       <prefix>NULL</prefix>
-                      <value>&lt;role&gt;&lt;roleTerm authority="marcrelator" type="text"&gt;%value%&lt;/roleTerm&gt;&lt;/role&gt;</value>
+                      <value>&lt;role&gt;&lt;roleTerm authority="marcrelator"
+                                                type="text"&gt;%value%&lt;/roleTerm&gt;&lt;/role&gt;</value>
                     </create>
                     <read>
                       <path>mods:role/mods:roleTerm</path>
@@ -285,7 +275,10 @@ For corporate authors, use the full corporate name.</description>
                       <path>self::node()</path>
                       <context>self</context>
                     </update>
-                    <delete>NULL</delete>
+                    <delete>
+                      <path>self::node()</path>
+                      <context>self</context>
+                    </delete>
                   </actions>
                 </properties>
                 <children/>
@@ -300,18 +293,21 @@ For corporate authors, use the full corporate name.</description>
           <access>TRUE</access>
           <collapsed>FALSE</collapsed>
           <collapsible>FALSE</collapsible>
-          <default_value>sound recording-musical</default_value>
+          <default_value>still image</default_value>
           <disabled>FALSE</disabled>
           <executes_submit_callback>FALSE</executes_submit_callback>
           <multiple>FALSE</multiple>
           <options>
-            <index key="sound recording">sound recording</index>
-            <index key="sound recording-musical">sound recording-musical</index>
-            <index key="sound recording-nonmusical">sound recording-nonmusical</index>
+            <text>text</text>
+            <cartographic>cartographic</cartographic>
+            <index key="notated music">notated music</index>
+            <index key="three dimensional object">three dimensional object</index>
+            <index key="mixed material">mixed material</index>
+            <index key="still image">still image</index>
           </options>
           <required>FALSE</required>
           <resizable>FALSE</resizable>
-          <title>Type of resource</title>
+          <title>Type of Resource</title>
           <tree>TRUE</tree>
           <actions>
             <create>
@@ -335,114 +331,18 @@ For corporate authors, use the full corporate name.</description>
         </properties>
         <children/>
       </element>
-      <element name="tableOfContents">
-        <properties>
-          <type>textarea</type>
-          <access>TRUE</access>
-          <description>Contents of the album, disc, etc.</description>
-          <required>FALSE</required>
-          <title>Table of Contents</title>
-          <tree>TRUE</tree>
-          <actions>
-            <create>
-              <path>self::node()</path>
-              <context>parent</context>
-              <schema/>
-              <type>element</type>
-              <prefix>NULL</prefix>
-              <value>tableOfContents</value>
-            </create>
-            <read>
-              <path>mods:tableOfContents</path>
-              <context>parent</context>
-            </read>
-            <update>
-              <path>self::node()</path>
-              <context>self</context>
-            </update>
-            <delete>NULL</delete>
-          </actions>
-        </properties>
-        <children/>
-      </element>
       <element name="genre">
         <properties>
-          <type>select</type>
+          <type>textfield</type>
           <access>TRUE</access>
+          <autocomplete_path>taxonomy/autocomplete/field_genre_terms_graphics</autocomplete_path>
           <collapsed>FALSE</collapsed>
           <collapsible>FALSE</collapsible>
-          <description>Vocabulary from http://special-cataloguing.com/node/1398 </description>
+          <description>A term that best describes the genre of the image. Use a term from the Thesaurus for Graphic Materials from the Library of
+                        Congress - http://www.loc.gov/pictures/collection/tgm/</description>
           <disabled>FALSE</disabled>
           <executes_submit_callback>FALSE</executes_submit_callback>
           <multiple>FALSE</multiple>
-          <options>
-            <index key=""/>
-            <anthems>anthems</anthems>
-            <ballets>ballets</ballets>
-            <bluegrass>bluegrass</bluegrass>
-            <blues>blues</blues>
-            <index key="canons and roundsct">canons and roundsct</index>
-            <contatas>contatas</contatas>
-            <canzonas>canzonas</canzonas>
-            <carols>carols</carols>
-            <chaconnes>chaconnes</chaconnes>
-            <index key="chance compositions">chance compositions</index>
-            <index key="chansons polyphonic">chansons polyphonic</index>
-            <index key="Christian chant">Christian chant</index>
-            <index key="chant religions other than Christian">chant religions other than Christian</index>
-            <index key="choral preludes">choral preludes</index>
-            <chorales>chorales</chorales>
-            <index key="concerti grossi">concerti grossi</index>
-            <concertos>concertos</concertos>
-            <index key="country music">country music</index>
-            <index key="dance forms">dance forms</index>
-            <index key="divertiments etc.">divertiments etc.</index>
-            <fantasias>fantasias</fantasias>
-            <index key="folk music">folk music</index>
-            <fugues>fugues</fugues>
-            <index key="gospel music">gospel music</index>
-            <hymns>hymns</hymns>
-            <jazz>jazz</jazz>
-            <madrigals>madrigals</madrigals>
-            <marches>marches</marches>
-            <masses>masses</masses>
-            <mazurkas>mazurkas</mazurkas>
-            <minuets>minuets</minuets>
-            <motets>motets</motets>
-            <index key="moving picture music">moving picture music</index>
-            <index key="multiple forms">multiple forms</index>
-            <index key="musical reviews and comedies">musical reviews and comedies</index>
-            <nocturnes>nocturnes</nocturnes>
-            <index key="not applicable">not applicable</index>
-            <operas>operas</operas>
-            <oratorios>oratorios</oratorios>
-            <overtures>overtures</overtures>
-            <index key="part-songs">part-songs</index>
-            <passacaglias>passacaglias</passacaglias>
-            <index key="passion music">passion music</index>
-            <pavans>pavans</pavans>
-            <polonaise>polonaise</polonaise>
-            <index key="popular music">popular music</index>
-            <preludes>preludes</preludes>
-            <index key="program music">program music</index>
-            <ragtime>ragtime</ragtime>
-            <requiems>requiems</requiems>
-            <ricercars>ricercars</ricercars>
-            <rock>rock</rock>
-            <rondos>rondos</rondos>
-            <sonatas>sonatas</sonatas>
-            <index key="songs (art songs, not pop songs)">songs (art songs, not pop songs)</index>
-            <index key="studies and exercises">studies and exercises</index>
-            <suites>suites</suites>
-            <index key="symphonic poems">symphonic poems</index>
-            <symphonies>symphonies</symphonies>
-            <taccatas>taccatas</taccatas>
-            <index key="trio-sonatis">trio-sonatis</index>
-            <index key="uknown (subject heading reflects instrument only)">uknown (subject heading reflects instrument only)</index>
-            <variations>variations</variations>
-            <waltzes>waltzes</waltzes>
-            <index key="other forms">other forms</index>
-          </options>
           <required>FALSE</required>
           <resizable>FALSE</resizable>
           <title>Genre</title>
@@ -452,9 +352,9 @@ For corporate authors, use the full corporate name.</description>
               <path>self::node()</path>
               <context>parent</context>
               <schema/>
-              <type>element</type>
+              <type>xml</type>
               <prefix>NULL</prefix>
-              <value>genre</value>
+              <value>&lt;genre authority="lctgm"&gt;%value%&lt;/genre&gt;</value>
             </create>
             <read>
               <path>mods:genre</path>
@@ -473,13 +373,7 @@ For corporate authors, use the full corporate name.</description>
         <properties>
           <type>fieldset</type>
           <access>TRUE</access>
-          <collapsed>FALSE</collapsed>
-          <collapsible>FALSE</collapsible>
-          <disabled>FALSE</disabled>
-          <executes_submit_callback>FALSE</executes_submit_callback>
-          <multiple>FALSE</multiple>
           <required>FALSE</required>
-          <resizable>FALSE</resizable>
           <title>Origin Information</title>
           <tree>TRUE</tree>
           <actions>
@@ -504,14 +398,8 @@ For corporate authors, use the full corporate name.</description>
             <properties>
               <type>textfield</type>
               <access>TRUE</access>
-              <collapsed>FALSE</collapsed>
-              <collapsible>FALSE</collapsible>
               <description>Enter date in the format YYYY-MM-DD.</description>
-              <disabled>FALSE</disabled>
-              <executes_submit_callback>FALSE</executes_submit_callback>
-              <multiple>FALSE</multiple>
               <required>FALSE</required>
-              <resizable>FALSE</resizable>
               <title>Date Issued</title>
               <tree>TRUE</tree>
               <actions>
@@ -575,13 +463,7 @@ For corporate authors, use the full corporate name.</description>
             <properties>
               <type>textfield</type>
               <access>TRUE</access>
-              <collapsed>FALSE</collapsed>
-              <collapsible>FALSE</collapsible>
-              <disabled>FALSE</disabled>
-              <executes_submit_callback>FALSE</executes_submit_callback>
-              <multiple>FALSE</multiple>
               <required>FALSE</required>
-              <resizable>FALSE</resizable>
               <title>Country</title>
               <tree>TRUE</tree>
               <actions>
@@ -591,7 +473,8 @@ For corporate authors, use the full corporate name.</description>
                   <schema/>
                   <type>xml</type>
                   <prefix>NULL</prefix>
-                  <value>&lt;place&gt;&lt;placeTerm authority='marccountry' type='code'&gt;%value%&lt;/placeTerm&gt;&lt;/place&gt;</value>
+                  <value>&lt;place&gt;&lt;placeTerm authority='marccountry'
+                                        type='code'&gt;%value%&lt;/placeTerm&gt;&lt;/place&gt;</value>
                 </create>
                 <read>
                   <path>mods:place/mods:placeTerm[@type = 'code']</path>
@@ -610,13 +493,7 @@ For corporate authors, use the full corporate name.</description>
             <properties>
               <type>textfield</type>
               <access>TRUE</access>
-              <collapsed>FALSE</collapsed>
-              <collapsible>FALSE</collapsible>
-              <disabled>FALSE</disabled>
-              <executes_submit_callback>FALSE</executes_submit_callback>
-              <multiple>FALSE</multiple>
               <required>FALSE</required>
-              <resizable>FALSE</resizable>
               <title>Place</title>
               <tree>TRUE</tree>
               <actions>
@@ -626,7 +503,8 @@ For corporate authors, use the full corporate name.</description>
                   <schema/>
                   <type>xml</type>
                   <prefix>NULL</prefix>
-                  <value>&lt;place&gt;&lt;placeTerm type="text"&gt;%value%&lt;/placeTerm&gt;&lt;/place&gt;</value>
+                  <value>&lt;place&gt;&lt;placeTerm
+                                        type="text"&gt;%value%&lt;/placeTerm&gt;&lt;/place&gt;</value>
                 </create>
                 <read>
                   <path>mods:place/mods:placeTerm[@type = 'text']</path>
@@ -650,7 +528,9 @@ For corporate authors, use the full corporate name.</description>
           <autocomplete_path>taxonomy/autocomplete/field_languages</autocomplete_path>
           <collapsed>FALSE</collapsed>
           <collapsible>FALSE</collapsible>
-          <description>Select an iso639-2b language (text) from http://www.loc.gov/standards/iso639-2/php/code_list.php</description>
+          <description>Select an iso639-2b language (text, not code) from &lt;a
+                        href="http://www.loc.gov/standards/iso639-2/php/code_list.php"
+                        target="_blank"&gt;http://www.loc.gov/standards/iso639-2/php/code_list.php&lt;/a&gt;</description>
           <disabled>FALSE</disabled>
           <executes_submit_callback>FALSE</executes_submit_callback>
           <multiple>FALSE</multiple>
@@ -665,7 +545,8 @@ For corporate authors, use the full corporate name.</description>
               <schema/>
               <type>xml</type>
               <prefix>NULL</prefix>
-              <value>&lt;language&gt;&lt;languageTerm authority="iso639-2b" type="code"&gt;%value%&lt;/languageTerm&gt;&lt;/language&gt;</value>
+              <value>&lt;language&gt;&lt;languageTerm authority="iso639-2b"
+                                type="text"&gt;%value%&lt;/languageTerm&gt;&lt;/language&gt;</value>
             </create>
             <read>
               <path>mods:language/mods:languageTerm</path>
@@ -675,7 +556,10 @@ For corporate authors, use the full corporate name.</description>
               <path>self::node()</path>
               <context>self</context>
             </update>
-            <delete>NULL</delete>
+            <delete>
+              <path>self::node()</path>
+              <context>self</context>
+            </delete>
           </actions>
         </properties>
         <children/>
@@ -715,13 +599,13 @@ For corporate authors, use the full corporate name.</description>
           <access>TRUE</access>
           <collapsed>FALSE</collapsed>
           <collapsible>FALSE</collapsible>
-          <description>A unique standard number or code that distinctively identifies the resource (e.g. ISRC).</description>
+          <description>A unique standard number or code that distinctively identifies the resource.</description>
           <disabled>FALSE</disabled>
           <executes_submit_callback>FALSE</executes_submit_callback>
           <multiple>FALSE</multiple>
           <required>FALSE</required>
           <resizable>FALSE</resizable>
-          <title>Identifier</title>
+          <title>Identifier (local)</title>
           <tree>TRUE</tree>
           <actions>
             <create>
@@ -730,10 +614,10 @@ For corporate authors, use the full corporate name.</description>
               <schema/>
               <type>xml</type>
               <prefix>NULL</prefix>
-              <value>&lt;identifier&gt;%value%&lt;/identifier&gt;</value>
+              <value>&lt;identifier type="local"&gt;%value%&lt;/identifier&gt;</value>
             </create>
             <read>
-              <path>mods:identifier</path>
+              <path>mods:identifier[@type='local']</path>
               <context>parent</context>
             </read>
             <update>
@@ -749,13 +633,7 @@ For corporate authors, use the full corporate name.</description>
         <properties>
           <type>fieldset</type>
           <access>TRUE</access>
-          <collapsed>FALSE</collapsed>
-          <collapsible>FALSE</collapsible>
-          <disabled>FALSE</disabled>
-          <executes_submit_callback>FALSE</executes_submit_callback>
-          <multiple>FALSE</multiple>
           <required>FALSE</required>
-          <resizable>FALSE</resizable>
           <title>Physical Description</title>
           <tree>TRUE</tree>
           <actions>
@@ -771,7 +649,10 @@ For corporate authors, use the full corporate name.</description>
               <path>mods:physicalDescription</path>
               <context>parent</context>
             </read>
-            <update>NULL</update>
+            <update>
+              <path>self::node()</path>
+              <context>self</context>
+            </update>
             <delete>NULL</delete>
           </actions>
         </properties>
@@ -782,14 +663,25 @@ For corporate authors, use the full corporate name.</description>
               <access>TRUE</access>
               <collapsed>FALSE</collapsed>
               <collapsible>FALSE</collapsible>
-              <default_value>sound recording</default_value>
-              <description>A designation of a particular physical presentation of a resource, including the physical form or medium of material for a resource.</description>
+              <default_value>nonprojected graphic</default_value>
+              <description>A designation of a particular physical presentation of a
+                                resource, including the physical form or medium of material for a
+                                resource.</description>
               <disabled>FALSE</disabled>
               <executes_submit_callback>FALSE</executes_submit_callback>
               <multiple>FALSE</multiple>
               <options>
                 <unspecified>unspecified</unspecified>
-                <index key="sound recording">sound recording</index>
+                <index key="tactile material">tactile material</index>
+                <index key="remote-sensing image">remote-sensing image</index>
+                <index key="projected graphic">projected graphic</index>
+                <index key="notated music">notated music</index>
+                <index key="nonprojected graphic">nonprojected graphic</index>
+                <microform>microform</microform>
+                <map>map</map>
+                <kit>kit</kit>
+                <globe>globe</globe>
+                <index key="electronic resource">electronic resource</index>
               </options>
               <required>FALSE</required>
               <resizable>FALSE</resizable>
@@ -802,7 +694,8 @@ For corporate authors, use the full corporate name.</description>
                   <schema/>
                   <type>xml</type>
                   <prefix>NULL</prefix>
-                  <value>&lt;form authority="marcform"&gt;%value%&lt;/form&gt;</value>
+                  <value>&lt;form
+                                        authority="marcform"&gt;%value%&lt;/form&gt;</value>
                 </create>
                 <read>
                   <path>mods:form</path>
@@ -823,7 +716,7 @@ For corporate authors, use the full corporate name.</description>
               <access>TRUE</access>
               <collapsed>FALSE</collapsed>
               <collapsible>FALSE</collapsible>
-              <description>A statement of the number and specific material of the units of the resource that express physical extent. (e.g. audio cassette; 4 min., 12 sec.)</description>
+              <description>A statement of the number and specific material of the units of the resource that express physical extent (e.g. dimensions, number of panels, etc.)</description>
               <disabled>FALSE</disabled>
               <executes_submit_callback>FALSE</executes_submit_callback>
               <multiple>FALSE</multiple>
@@ -888,14 +781,7 @@ For corporate authors, use the full corporate name.</description>
         <properties>
           <type>fieldset</type>
           <access>TRUE</access>
-          <collapsed>FALSE</collapsed>
-          <collapsible>FALSE</collapsible>
-          <description>Use LCSH.</description>
-          <disabled>FALSE</disabled>
-          <executes_submit_callback>FALSE</executes_submit_callback>
-          <multiple>FALSE</multiple>
           <required>FALSE</required>
-          <resizable>FALSE</resizable>
           <title>Subject</title>
           <tree>TRUE</tree>
           <actions>
@@ -1046,13 +932,7 @@ For corporate authors, use the full corporate name.</description>
             <properties>
               <type>fieldset</type>
               <access>TRUE</access>
-              <collapsed>FALSE</collapsed>
-              <collapsible>FALSE</collapsible>
-              <disabled>FALSE</disabled>
-              <executes_submit_callback>FALSE</executes_submit_callback>
-              <multiple>FALSE</multiple>
               <required>FALSE</required>
-              <resizable>FALSE</resizable>
               <title>Geographic Information</title>
               <tree>TRUE</tree>
               <actions>
@@ -1122,7 +1002,8 @@ For corporate authors, use the full corporate name.</description>
                 <properties>
                   <type>textfield</type>
                   <access>TRUE</access>
-                  <description>Name of a country, i.e. a political entity considered a country.</description>
+                  <description>Name of a country, i.e. a political entity
+                                        considered a country.</description>
                   <required>FALSE</required>
                   <title>Country</title>
                   <tree>TRUE</tree>
@@ -1152,7 +1033,8 @@ For corporate authors, use the full corporate name.</description>
                 <properties>
                   <type>textfield</type>
                   <access>TRUE</access>
-                  <description>Includes first order political divisions called provinces within a country, e.g. in Canada.</description>
+                  <description>Includes first order political divisions called
+                                        provinces within a country, e.g. in Canada.</description>
                   <required>FALSE</required>
                   <title>Province</title>
                   <tree>TRUE</tree>
@@ -1182,7 +1064,9 @@ For corporate authors, use the full corporate name.</description>
                 <properties>
                   <type>textfield</type>
                   <access>TRUE</access>
-                  <description>Includes regions that have status as a jurisdiction, usually incorporating more than one first level jurisdiction.</description>
+                  <description>Includes regions that have status as a
+                                        jurisdiction, usually incorporating more than one first
+                                        level jurisdiction.</description>
                   <required>FALSE</required>
                   <title>Region</title>
                   <tree>TRUE</tree>
@@ -1212,7 +1096,8 @@ For corporate authors, use the full corporate name.</description>
                 <properties>
                   <type>textfield</type>
                   <access>TRUE</access>
-                  <description>Name of the largest local administrative unit in various countries, e.g. England.</description>
+                  <description>Name of the largest local administrative unit in
+                                        various countries, e.g. England.</description>
                   <required>FALSE</required>
                   <title>County</title>
                   <tree>TRUE</tree>
@@ -1242,7 +1127,8 @@ For corporate authors, use the full corporate name.</description>
                 <properties>
                   <type>textfield</type>
                   <access>TRUE</access>
-                  <description>Name of an inhabited place incorporated as a city, town, etc.</description>
+                  <description>Name of an inhabited place incorporated as a city,
+                                        town, etc.</description>
                   <required>FALSE</required>
                   <title>City</title>
                   <tree>TRUE</tree>
@@ -1272,7 +1158,8 @@ For corporate authors, use the full corporate name.</description>
                 <properties>
                   <type>textfield</type>
                   <access>TRUE</access>
-                  <description>Name of a smaller unit within a populated place, e.g., neighborhoods, parks, or streets.</description>
+                  <description>Name of a smaller unit within a populated place,
+                                        e.g., neighborhoods, parks, or streets.</description>
                   <required>FALSE</required>
                   <title>City Section</title>
                   <tree>TRUE</tree>
@@ -1332,8 +1219,15 @@ For corporate authors, use the full corporate name.</description>
                 <properties>
                   <type>textfield</type>
                   <access>TRUE</access>
-                  <description>Contains a statement of coordinates covered by the resource.</description>
+                  <collapsed>FALSE</collapsed>
+                  <collapsible>FALSE</collapsible>
+                  <description>Contains a statement of coordinates covered by the
+                                        resource.</description>
+                  <disabled>FALSE</disabled>
+                  <executes_submit_callback>FALSE</executes_submit_callback>
+                  <multiple>FALSE</multiple>
                   <required>FALSE</required>
+                  <resizable>FALSE</resizable>
                   <title>Coordinates</title>
                   <tree>TRUE</tree>
                   <actions>
@@ -1361,16 +1255,6 @@ For corporate authors, use the full corporate name.</description>
             </children>
           </element>
         </children>
-      </element>
-      <element name="Ingest">
-        <properties>
-          <type>hidden</type>
-          <access>TRUE</access>
-          <default_value>hiddenvalue</default_value>
-          <required>FALSE</required>
-          <tree>TRUE</tree>
-        </properties>
-        <children/>
       </element>
       <element name="accessCondition">
         <properties>
