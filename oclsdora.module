@@ -101,7 +101,7 @@ function oclsdora_islandora_xml_form_builder_form_associations() {
       'template' => FALSE,
     ),
   );
-  $base_models = array (
+  $base_models = array(
     'audio' => 'islandora:sp-audioCModel',
     'video' => 'islandora:sp_videoCModel',
     'pdf' => 'islandora:sp_pdf',
