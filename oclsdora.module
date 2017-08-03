@@ -9,7 +9,7 @@
  * Implements hook_islandora_xml_form_builder_form_associations().
  */
 function oclsdora_islandora_xml_form_builder_form_associations() {
-  return array(
+  $associations = array(
     'bceln_artwork_form' => array(
       'content_model' => 'islandora:sp_large_image_cmodel',
       'form_name' => 'BC ELN Artwork Form',
@@ -101,6 +101,31 @@ function oclsdora_islandora_xml_form_builder_form_associations() {
       'template' => FALSE,
     ),
   );
+  $base_models = array(
+    'audio' => 'islandora:sp-audioCModel',
+    'video' => 'islandora:sp_videoCModel',
+    'pdf' => 'islandora:sp_pdf',
+    'binary' => 'islandora:binaryObjectCModel',
+    'collection' => 'islandora:collectionCModel',
+    'large_image' => 'islandora:sp_large_image_cmodel',
+    'book' => 'islandora:bookCModel',
+    'basic_image' => 'islandora:sp_basic_image',
+    'document' => 'islandora:sp_document_collection',
+  );
+  $mods_base = array(
+    'form_name' => 'OCLS Base MODS Form',
+    'dsid' => 'MODS',
+    'title_field' => array('titles', '0', 'title'),
+    'transform' => 'mods_to_dc.xsl',
+    'template' => FALSE,
+    'self_transform' => 'islandora_cleanup_mods_extended.xsl',
+  );
+  foreach ($base_models as $key => $model) {
+    $associations["base_mods_$key"] = array(
+      'content_model' => $model,
+    ) + $mods_base;
+  }
+  return $associations;
 }
 
 /**
@@ -132,6 +157,9 @@ function oclsdora_islandora_xml_form_builder_forms() {
     ),
     'BC ELN Serials Form' => array(
       'form_file' => "$module_path/xml/bceln_serials_form.xml",
+    ),
+    'OCLS Base MODS Form' => array(
+      'form_file' => "$module_path/xml/ocls_base_mods_form.xml",
     ),
   );
 }
