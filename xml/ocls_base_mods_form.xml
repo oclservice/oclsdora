@@ -902,7 +902,7 @@
                   <value>dateIssued</value>
                 </create>
                 <read>
-                  <path>self::node()</path>
+                  <path>mods:dateIssued</path>
                   <context>parent</context>
                 </read>
                 <update>
@@ -1678,7 +1678,7 @@
                   <value>relatedItem</value>
                 </create>
                 <read>
-                  <path>mods:relatedItem[not(@type) and mods:titleInfo]</path>
+                  <path>mods:relatedItem</path>
                   <context>parent</context>
                 </read>
                 <update>NULL</update>
