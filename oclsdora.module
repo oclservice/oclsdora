@@ -133,6 +133,9 @@ function oclsdora_islandora_xml_form_builder_forms() {
     'BC ELN Serials Form' => array(
       'form_file' => "$module_path/xml/bceln_serials_form.xml",
     ),
+    'OCLS Base MODS Form' => array(
+      'form_file' => "$module_path/xml/ocls_base_mods_form.xml",
+    ),
   );
 }
 
