@@ -475,41 +475,6 @@
                   </element>
                 </children>
               </element>
-              <element name="namePartDate">
-                <properties>
-                  <type>textfield</type>
-                  <access>TRUE</access>
-                  <collapsed>FALSE</collapsed>
-                  <collapsible>FALSE</collapsible>
-                  <disabled>FALSE</disabled>
-                  <executes_submit_callback>FALSE</executes_submit_callback>
-                  <multiple>FALSE</multiple>
-                  <required>FALSE</required>
-                  <resizable>FALSE</resizable>
-                  <title>Name Date Part</title>
-                  <tree>TRUE</tree>
-                  <actions>
-                    <create>
-                      <path>self::node()</path>
-                      <context>parent</context>
-                      <schema/>
-                      <type>xml</type>
-                      <prefix>NULL</prefix>
-                      <value>&lt;namePart type="date"&gt;%value%&lt;/namePart&gt;</value>
-                    </create>
-                    <read>
-                      <path>mods:namePart[@type="date"]</path>
-                      <context>parent</context>
-                    </read>
-                    <update>
-                      <path>self::node()</path>
-                      <context>self</context>
-                    </update>
-                    <delete>NULL</delete>
-                  </actions>
-                </properties>
-                <children/>
-              </element>
               <element name="role">
                 <properties>
                   <type>markup</type>
@@ -564,41 +529,6 @@
                         </create>
                         <read>
                           <path>mods:roleTerm[@type="text"]</path>
-                          <context>parent</context>
-                        </read>
-                        <update>
-                          <path>self::node()</path>
-                          <context>self</context>
-                        </update>
-                        <delete>NULL</delete>
-                      </actions>
-                    </properties>
-                    <children/>
-                  </element>
-                  <element name="roleTermCode">
-                    <properties>
-                      <type>textfield</type>
-                      <access>TRUE</access>
-                      <collapsed>FALSE</collapsed>
-                      <collapsible>FALSE</collapsible>
-                      <disabled>FALSE</disabled>
-                      <executes_submit_callback>FALSE</executes_submit_callback>
-                      <multiple>FALSE</multiple>
-                      <required>FALSE</required>
-                      <resizable>FALSE</resizable>
-                      <title>Role (MARC relator code)</title>
-                      <tree>TRUE</tree>
-                      <actions>
-                        <create>
-                          <path>self::node()</path>
-                          <context>parent</context>
-                          <schema/>
-                          <type>xml</type>
-                          <prefix>NULL</prefix>
-                          <value>&lt;roleTerm type="code" authority="marcrelator"&gt;%value%&lt;/roleTerm&gt;</value>
-                        </create>
-                        <read>
-                          <path>mods:roleTerm[@type="code"][@authority="marcrelator"]</path>
                           <context>parent</context>
                         </read>
                         <update>
@@ -1254,7 +1184,7 @@
                   <multiple>FALSE</multiple>
                   <required>FALSE</required>
                   <resizable>FALSE</resizable>
-                  <title>Extent Unit (Contents Unit)</title>
+                  <title>Extent Unit</title>
                   <tree>TRUE</tree>
                   <actions>
                     <create>
@@ -1474,18 +1404,7 @@
                   <multiple>FALSE</multiple>
                   <options>
                     <index key="">none</index>
-                    <thesis>thesis</thesis>
-                    <index key="additional physical form">additional physical form</index>
-                    <reproduction>reproduction</reproduction>
-                    <index key="original location">original location</index>
-                    <funding>funding</funding>
-                    <index key="system details">system details</index>
-                    <acquisition>acquisition</acquisition>
-                    <index key="biographical/historical">biographical/historical</index>
-                    <ownership>ownership</ownership>
-                    <publications>publications</publications>
                     <local>local</local>
-                    <index key="linking-entry-complexity-note">linking-entry-complexity-note</index>
                   </options>
                   <required>FALSE</required>
                   <resizable>FALSE</resizable>
@@ -1605,7 +1524,6 @@
                   <options>
                     <index key="">none</index>
                     <lcsh>lcsh</lcsh>
-                    <mesh>mesh</mesh>
                     <local>local</local>
                     <lctgm>lctgm</lctgm>
                   </options>
@@ -1735,10 +1653,18 @@
                   <executes_submit_callback>FALSE</executes_submit_callback>
                   <multiple>FALSE</multiple>
                   <options>
-                    <corporate>corporate</corporate>
-                    <conference>conference</conference>
-                    <personal>personal</personal>
-                    <family>family</family>
+                    <index key=""/>
+                    <constituent>constituent</constituent>
+                    <host>host</host>
+                    <isReferencedBy>isReferencedBy</isReferencedBy>
+                    <original>original</original>
+                    <otherFormat>otherFormat</otherFormat>
+                    <otherVersion>otherVersion</otherVersion>
+                    <preceding>preceding</preceding>
+                    <references>references</references>
+                    <reviewOf>reviewOf</reviewOf>
+                    <series>series</series>
+                    <succeeding>succeeding</succeeding>
                   </options>
                   <required>FALSE</required>
                   <resizable>FALSE</resizable>
