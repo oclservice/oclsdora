@@ -203,3 +203,94 @@ function oclsdora_form_xml_form_builder_ingest_form_alter(&$form, &$form_state, 
     }
   }
 }
+
+/**
+ * Implements hook_islandora_required_objects().
+ */
+function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
+  $module_path = drupal_get_path('module', 'oclsdora');
+
+  $namespaces = array(
+    'seneca',
+    'conestoga',
+    'fleming',
+    'centennial',
+    'loyalists',
+    'georgian',
+  );
+
+  // Create objects.
+  $collections = array();
+  foreach ($namespaces as $ns) {
+    $collections[$ns] = $connection->repository->constructObject("$ns:root");
+  }
+
+  // Populate base objects.
+  foreach ($collections as $object) {
+    $object->owner = 'fedoraAdmin';
+    $object->models = 'islandora:collectionCModel';
+    $object->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:root');
+  }
+
+  // Populate Labels.
+  $labels = array(
+    'seneca' => 'Seneca',
+    'conestoga' => 'Conestoga',
+    'fleming' => 'Fleming',
+    'centennial' => 'Centennial',
+    'loyalists' => 'Loyalists',
+    'georgian' => 'Georgian',
+  );
+  foreach ($labels as $ns => $label) {
+    $collections[$ns]->label = $label;
+  }
+
+  // Populate TNs.
+  $tns = array(
+    'seneca' => "$module_path/images/seneca-libraries-logo.png",
+    'conestoga' => "$module_path/images/conestoga-logo.jpg",
+    'fleming' => "$module_path/images/fleming_png.png",
+    'centennial' => "$module_path/images/centennial_jpg.jpg",
+    'loyalists' => "$module_path/images/loyalist_library.jpg",
+    'georgian' => "$module_path/images/georgian_png.png",
+  );
+  $mimes = array(
+    'seneca' => 'image/png',
+    'conestoga' => 'image/jpeg',
+    'fleming' => 'image/png',
+    'centennial' => 'image/jpeg',
+    'loyalists' => 'image/jpeg',
+    'georgian' => 'image/png',
+  );
+  foreach ($tns as $ns => $path) {
+    $datastream = $collections[$ns]->constructDatastream('TN', 'M');
+    $datastream->label = 'Thumbnail';
+    $datastream->mimetype = $mimes[$ns];
+    $datastream->setContentFromFile($path, FALSE);
+    $collections[$ns]->ingestDatastream($datastream);
+  }
+
+  // Populate collection policies.
+  $collection_policies = array(
+    'seneca' => "$module_path/xml/collection_policies/seneca.xml",
+    'conestoga' => "$module_path/xml/collection_policies/conestoga.xml",
+    'fleming' => "$module_path/xml/collection_policies/fleming.xml",
+    'centennial' => "$module_path/xml/collection_policies/centennial.xml",
+    'loyalists' => "$module_path/xml/collection_policies/loyalists.xml",
+    'georgian' => "$module_path/xml/collection_policies/georgian.xml",
+  );
+  foreach ($collection_policies as $ns => $path) {
+    $datastream = $collections[$ns]->constructDatastream('COLLECTION_POLICY', 'M');
+    $datastream->label = 'Collection policy';
+    $datastream->mimetype = 'application/xml';
+    $datastream->setContentFromFile($path, FALSE);
+    $collections[$ns]->ingestDatastream($datastream);
+  }
+
+  return array(
+    'oclsdora' => array(
+      'title' => 'Oclsdora',
+      'objects' => array_values($collections),
+    ),
+  );
+}
