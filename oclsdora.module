@@ -215,7 +215,7 @@ function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
     'conestoga',
     'fleming',
     'centennial',
-    'loyalists',
+    'loyalist',
     'georgian',
   );
 
@@ -238,7 +238,7 @@ function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
     'conestoga' => 'Conestoga',
     'fleming' => 'Fleming',
     'centennial' => 'Centennial',
-    'loyalists' => 'Loyalists',
+    'loyalist' => 'Loyalist',
     'georgian' => 'Georgian',
   );
   foreach ($labels as $ns => $label) {
@@ -251,7 +251,7 @@ function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
     'conestoga' => "$module_path/images/conestoga-logo.jpg",
     'fleming' => "$module_path/images/fleming_png.png",
     'centennial' => "$module_path/images/centennial_jpg.jpg",
-    'loyalists' => "$module_path/images/loyalist_library.jpg",
+    'loyalist' => "$module_path/images/loyalist_library.jpg",
     'georgian' => "$module_path/images/georgian_png.png",
   );
   $mimes = array(
@@ -259,7 +259,7 @@ function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
     'conestoga' => 'image/jpeg',
     'fleming' => 'image/png',
     'centennial' => 'image/jpeg',
-    'loyalists' => 'image/jpeg',
+    'loyalist' => 'image/jpeg',
     'georgian' => 'image/png',
   );
   foreach ($tns as $ns => $path) {
@@ -276,7 +276,7 @@ function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
     'conestoga' => "$module_path/xml/collection_policies/conestoga.xml",
     'fleming' => "$module_path/xml/collection_policies/fleming.xml",
     'centennial' => "$module_path/xml/collection_policies/centennial.xml",
-    'loyalists' => "$module_path/xml/collection_policies/loyalists.xml",
+    'loyalist' => "$module_path/xml/collection_policies/loyalists.xml",
     'georgian' => "$module_path/xml/collection_policies/georgian.xml",
   );
   foreach ($collection_policies as $ns => $path) {
