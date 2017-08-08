@@ -1,0 +1,8 @@
+<collection_policy xmlns="http://www.islandora.ca" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="" xsi:schemaLocation="http://www.islandora.ca">
+  <content_models>
+    <content_model dsid="" name="Islandora Collection Content Model" namespace="loyalists" pid="islandora:collectionCModel"></content_model>
+  </content_models>
+  <search_terms></search_terms>
+  <staging_area></staging_area>
+  <relationship>isMemberOfCollection</relationship>
+</collection_policy>
