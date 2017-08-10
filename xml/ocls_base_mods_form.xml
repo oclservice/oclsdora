@@ -282,10 +282,10 @@
                   <schema/>
                   <type>xml</type>
                   <prefix>NULL</prefix>
-                  <value>&lt;abstract type="Summary"&gt;%value%&lt;/abstract&gt;</value>
+                  <value>&lt;abstract&gt;%value%&lt;/abstract&gt;</value>
                 </create>
                 <read>
-                  <path>mods:abstract[@type="Summary"]</path>
+                  <path>mods:abstract</path>
                   <context>parent</context>
                 </read>
                 <update>
