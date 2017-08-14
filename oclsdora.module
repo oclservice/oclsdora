@@ -254,6 +254,35 @@ function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
     'loyalist' => "$module_path/images/loyalist_library.jpg",
     'georgian' => "$module_path/images/georgian_png.png",
   );
+
+  // Populate home page images
+  $front_images = array(
+    'seneca' => "$module_path/images/front/seneca/seneca.jpg",
+    'conestoga' => "$module_path/images/front/conestoga/conestoga.jpg",
+    'fleming' => "$module_path/images/front/fleming/fleming.jpg",
+    'centennial' => "$module_path/images/front/centennial/centennial.jpg",
+    'loyalist' => "$module_path/images/front/loyalist/loyalist.jpg",
+    'georgian' => "$module_path/images/front/georgian/georgian.jpg",
+  );
+  foreach ($front_images as $ns => $path) {
+    $datastream = $collections[$ns]->constructDatastream('front', 'M');
+    $datastream->label = 'front';
+    $datastream->mimetype = 'image/jpeg';
+    $datastream->setContentFromFile($path, FALSE);
+    $collections[$ns]->ingestDatastream($datastream);
+  }
+
+  // Create a 'front' datastream on the islandora:root object.
+  $islandora_root = islandora_object_load('islandora:root');
+  if (isset($islandora_root) && !isset($islandora_root['front'])) {
+    $path = "$module_path/images/front/base/view.jpg";
+    $datastream = $islandora_root->constructDatastream('front', 'M');
+    $datastream->label = 'front';
+    $datastream->mimetype = 'image/jpeg';
+    $datastream->setContentFromFile($path, FALSE);
+    $islandora_root->ingestDatastream($datastream);
+  }
+
   $mimes = array(
     'seneca' => 'image/png',
     'conestoga' => 'image/jpeg',
