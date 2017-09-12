@@ -255,7 +255,7 @@ function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
     'georgian' => "$module_path/images/georgian_png.png",
   );
 
-  // Populate home page images
+  // Populate home page images.
   $front_images = array(
     'seneca' => "$module_path/images/front/seneca/seneca.jpg",
     'conestoga' => "$module_path/images/front/conestoga/conestoga.jpg",
