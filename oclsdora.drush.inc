@@ -33,7 +33,7 @@ function drush_oclsdora_add_missing_model() {
   $processed = 0;
   foreach ($qp->islandoraSolrResult['response']['objects'] as $solr_doc) {
     $object = islandora_object_load($solr_doc['PID']);
-    $object->models = 'islandora:binaryObjectCModel';
+    $object->models = 'islandora:sp_pdf';
     $processed = $processed + 1;
     drush_log(dt('@processed/@total Updated the content model for @pid.', array(
       '@processed' => $processed,
