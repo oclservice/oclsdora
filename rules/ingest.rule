@@ -13,7 +13,7 @@
         }
       },
       { "mail_to_users_of_role" : {
-          "roles" : { "value" : { "3" : "3" } },
+          "roles" : { "value" : { "5" : "5" } },
           "subject" : "[site:name] \u0022[object:label]\u0022 has been ingested",
           "message" : "[object:label] has been ingested as [object:id]"
         }
