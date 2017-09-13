@@ -14,6 +14,10 @@ function oclsdora_drush_command() {
     'aliases' => array(
       'oamm',
     ),
+    'drupal dependencies' => array(
+      'islandora',
+      'islandora_solr',
+    ),
   );
   return $commands;
 }
@@ -23,12 +27,11 @@ function oclsdora_drush_command() {
  */
 function drush_oclsdora_add_missing_model() {
   $model_field = variable_get('islandora_solr_content_model_field', 'RELS_EXT_hasModel_uri_ms');
-  $qp = new islandoraSolrQueryProcessor();
+  $qp = new IslandoraSolrQueryProcessor();
   $qp->buildQuery(format_string('-!model_field:*', array('!model_field' => $model_field)));
   $qp->solrParams['fl'] = 'PID';
   $qp->solrParams['fq'] = array();
   $qp->solrLimit = 10000000;
-  $qp->sort = 'fgs_lastModifiedDate_dt asc';
   $qp->executeQuery(FALSE);
   $processed = 0;
   foreach ($qp->islandoraSolrResult['response']['objects'] as $solr_doc) {
