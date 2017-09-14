@@ -389,6 +389,7 @@
                   <executes_submit_callback>FALSE</executes_submit_callback>
                   <multiple>FALSE</multiple>
                   <options>
+                    <index key=""/>
                     <corporate>corporate</corporate>
                     <conference>conference</conference>
                     <personal>personal</personal>
