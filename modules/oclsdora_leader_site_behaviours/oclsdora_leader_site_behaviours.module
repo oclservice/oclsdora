@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations.
+ */
+
+/**
+ * Implements hook_islandora_object_access().
+ */
+function oclsdora_leader_site_behaviours_islandora_object_access($op, $object, $user) {
+  module_load_include('inc', 'oclsdora_leader_site_behaviours', 'includes/utilities');
+  // If the object is an IP-restricted member object, we restrict it. Otherwise,
+  // we make no assertion as to whether it should be restricted.
+  return oclsdora_leader_site_behaviours_is_ip_restricted_member_object($object->id) ?
+    FALSE : NULL;
+}
+
+/**
+ * Implements hook_islandora_solr_results_alter().
+ */
+function oclsdora_leader_site_behaviours_islandora_solr_results_alter(&$search_results, $query_processor) {
+  module_load_include('inc', 'islandora_ip_embargo', 'includes/utilities');
+  foreach ($search_results as $idx => $item) {
+    if (isset($item['PID']) && oclsdora_leader_site_behaviours_is_ip_restricted_member_object($item['PID'])) {
+      unset($search_results[$idx]);
+    }
+  }
+}
