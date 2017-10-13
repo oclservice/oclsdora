@@ -5,6 +5,8 @@
  * Hook implementations.
  */
 
+const OCLSDORA_LEADER_SITE_BEHAVIOURS_IP_RESTRICTED_FIELD = "ocls_ip_embargoed_b";
+
 /**
  * Implements hook_islandora_object_access().
  */
@@ -17,13 +19,9 @@ function oclsdora_leader_site_behaviours_islandora_object_access($op, $object, $
 }
 
 /**
- * Implements hook_islandora_solr_results_alter().
+ * Implements hook_islandora_solr_query().
  */
-function oclsdora_leader_site_behaviours_islandora_solr_results_alter(&$search_results, $query_processor) {
-  module_load_include('inc', 'islandora_ip_embargo', 'includes/utilities');
-  foreach ($search_results as $idx => $item) {
-    if (isset($item['PID']) && oclsdora_leader_site_behaviours_is_ip_restricted_member_object($item['PID'])) {
-      unset($search_results[$idx]);
-    }
-  }
+function oclsdora_leader_site_behaviours_islandora_solr_query($query_processor) {
+  $fq = OCLSDORA_LEADER_SITE_BEHAVIOURS_IP_RESTRICTED_FIELD . ":false";
+  $query_processor->solrParams['fq'][] = $fq;
 }

@@ -33,12 +33,10 @@ function oclsdora_leader_site_behaviours_member_namespaces() {
  *   member object.
  */
 function oclsdora_leader_site_behaviours_is_ip_restricted_member_object($pid) {
-  module_load_include('inc', 'islandora_ip_embargo', 'includes/utilities');
-  if (islandora_ip_embargo_restrict_access($pid)) {
-    $pid_bits = explode(':', $pid);
-    if (in_array(reset($pid_bits), oclsdora_leader_site_behaviours_member_namespaces())) {
-      return TRUE;
-    }
-  }
-  return FALSE;
+  $qp = new IslandoraSolrQueryProcessor();
+  $qp->buildQuery("PID:\"{$pid}\"");
+  $qp->solrParams['fl'] = "PID," . OCLSDORA_LEADER_SITE_BEHAVIOURS_IP_RESTRICTED_FIELD;
+  $qp->executeQuery(FALSE);
+  $doc = reset($qp->islandoraSolrResult['response']['objects']);
+  return isset($doc['solr_doc'][OCLSDORA_LEADER_SITE_BEHAVIOURS_IP_RESTRICTED_FIELD]) ? $doc['solr_doc'][OCLSDORA_LEADER_SITE_BEHAVIOURS_IP_RESTRICTED_FIELD] : FALSE;
 }
