@@ -21,13 +21,10 @@ function oclsdora_ip_embargoed_callback($pid) {
   $embargoed = islandora_ip_embargo_get_embargo($pid)
     ->rowCount();
 
-  $xml = new DOMDocument('1.0', 'UTF-8');
-  $embargo_info = $xml->createElement('embargo_info');
-  $embargoed_element = $xml->createElement('embargo_status', $embargoed ? 'true' : 'false');
-  $embargo_info->appendChild($embargoed_element);
-  $xml->appendChild($embargo_info);
-
-  $out = fopen('php://output', 'w');
-  fputs($out, $xml->saveXML());
-  fclose($out);
+  $writer = new XMLWriter();
+  $writer->openURI('php://output');
+  $writer->startElement('embargo_info');
+  $writer->writeElement('embargo_status', $embargoed ? 'true' : 'false');
+  $writer->endElement();
+  $writer->flush();
 }

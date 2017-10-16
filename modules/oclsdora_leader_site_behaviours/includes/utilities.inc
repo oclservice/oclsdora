@@ -6,23 +6,6 @@
  */
 
 /**
- * Gets a list of member site namespaces.
- *
- * @return array
- *   List of member site namespaces.
- */
-function oclsdora_leader_site_behaviours_member_namespaces() {
-  return array(
-    'seneca',
-    'conestoga',
-    'fleming',
-    'centennial',
-    'loyalist',
-    'georgian',
-  );
-}
-
-/**
  * Determines whether a PID represents an IP-restricted member site object.
  *
  * @param string $pid

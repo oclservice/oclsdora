@@ -10,8 +10,6 @@ This module requires the following modules/libraries:
 
 * [Islandora](https://github.com/islandora/islandora)
 
-In addition, the [Apache Solr](http://php.net/manual/en/book.solr.php) PHP module must be installed.
-
 ## Installation
 
 Install as usual, see [this](https://drupal.org/documentation/install/modules-themes/modules-7) for further information.
