@@ -323,3 +323,95 @@ function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
     ),
   );
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function oclsdora_form_islandora_guided_ingest_admin_form_alter(array &$form, array &$form_state) {
+  $form['oclsdora_guided_ingest_next_prev'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable Next/Prev buttons'),
+    '#default_value' => variable_get('oclsdora_guided_ingest_next_prev', FALSE),
+    '#description' => t('Enable Next and Previous tab buttons that appear at the bottom of each tab.')
+  );
+
+  $form['oclsdora_guided_ingest_next_text'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Next Button Text'),
+    '#default_value' => variable_get('oclsdora_guided_ingest_next_text', 'Next'),
+    '#states' => array(
+      'visible' => array(
+        ':input[name="oclsdora_guided_ingest_next_prev"]' => array('checked' => TRUE),
+      ),
+    ),
+  );
+
+  $form['oclsdora_guided_ingest_prev_text'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Previous Button Text'),
+    '#default_value' => variable_get('oclsdora_guided_ingest_prev_text', 'Previous'),
+    '#states' => array(
+      'visible' => array(
+        ':input[name="oclsdora_guided_ingest_next_prev"]' => array('checked' => TRUE),
+      ),
+    ),
+  );
+
+  $form['save']['#weight'] = 99;
+  $form['#submit'][]
+    = 'oclsdora_islandora_guided_ingest_admin_form_submit';
+}
+
+/**
+ * Implements hook_form_submit().
+ */
+function oclsdora_islandora_guided_ingest_admin_form_submit(array $form, array $form_state) {
+  variable_set('oclsdora_guided_ingest_next_prev', $form_state['values']['oclsdora_guided_ingest_next_prev']);
+  variable_set('oclsdora_guided_ingest_next_text', filter_xss($form_state['values']['oclsdora_guided_ingest_next_text']));
+  variable_set('oclsdora_guided_ingest_prev_text', filter_xss($form_state['values']['oclsdora_guided_ingest_prev_text']));
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function oclsdora_form_islandora_guided_ingest_simplified_ingest_form_alter(array &$form, array &$form_state) {
+  if (variable_get('oclsdora_guided_ingest_next_prev', FALSE)) {
+    $next_button = array(
+      '#type' => 'button',
+      '#value' => t(
+        '@next', array(
+          '@next' => variable_get('oclsdora_guided_ingest_next_text', 'Next')
+        )
+      ),
+      '#attributes' => array(
+        'class' => array(
+          'islandora-guided-ingest-next',
+        )
+      ),
+    );
+
+    $prev_button = array(
+      '#type' => 'button',
+      '#value' => t(
+        '@prev', array(
+          '@prev' => variable_get('oclsdora_guided_ingest_prev_text', 'Previous')
+        )
+      ),
+      '#attributes' => array(
+        'class' => array(
+          'islandora-guided-ingest-prev',
+        )
+      ),
+    );
+
+    // Add our next/previous buttons
+    $form['tabs']['collection_tab']['next'] = $next_button;
+    $form['tabs']['description']['prev'] = $prev_button;
+    $form['tabs']['description']['next'] = $next_button;
+    $form['tabs']['file']['prev'] = $prev_button;
+
+    $form['#attached']['js'] = array(
+      drupal_get_path('module', 'oclsdora') . '/js/tab_nav.js',
+    );
+  }
+}
