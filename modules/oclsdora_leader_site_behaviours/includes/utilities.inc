@@ -16,9 +16,8 @@
  *   member object.
  */
 function oclsdora_leader_site_behaviours_is_ip_restricted_member_object($pid) {
-  $pid_bits = explode(':', $pid);
-  $namespace = reset($pid_bits);
-  if (in_array($namespace, array(
+  module_load_include('inc', 'islandora', 'includes/utilities');
+  if (in_array(islandora_get_namespace($pid), array(
     'seneca',
     'conestoga',
     'fleming',
