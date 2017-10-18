@@ -19,11 +19,4 @@ function oclsdora_install() {
 function oclsdora_uninstall() {
   module_load_include('inc', 'islandora', 'includes/solution_packs');
   islandora_install_solution_pack('oclsdora', 'uninstall');
-
-  $variables = array(
-    'islandora_guided_ingest_next_prev',
-    'islandora_guided_ingest_next_text',
-    'islandora_guided_ingest_prev_text',
-  );
-  array_walk($variables, 'variable_del');
 }
