@@ -323,3 +323,39 @@ function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
     ),
   );
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function oclsdora_form_islandora_guided_ingest_simplified_ingest_form_alter(array &$form, array &$form_state) {
+  $next_button = array(
+    '#type' => 'button',
+    '#value' => t('Next'),
+    '#attributes' => array(
+      'class' => array(
+        'islandora-guided-ingest-next',
+      ),
+    ),
+  );
+
+  $prev_button = array(
+    '#type' => 'button',
+    '#value' => t('Previous'),
+    '#attributes' => array(
+      'class' => array(
+        'islandora-guided-ingest-prev',
+      ),
+    ),
+  );
+
+  // Add our next/previous buttons.
+  $form['tabs']['collection_tab']['next'] = $next_button;
+  $form['tabs']['description']['prev'] = $prev_button;
+  $form['tabs']['description']['next'] = $next_button;
+  $form['tabs']['file']['prev'] = $prev_button;
+
+  $form['#attached']['js'][] = array(
+    'type' => 'file',
+    'data' => drupal_get_path('module', 'oclsdora') . '/js/tab_nav.js',
+  );
+}
