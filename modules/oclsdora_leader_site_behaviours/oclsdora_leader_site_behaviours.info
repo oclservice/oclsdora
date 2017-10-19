@@ -1,0 +1,7 @@
+name = "OCLS Leader Site Behaviours"
+description = "Defines specific behaviours that should only be taken by the OCLS leader site"
+package = Islandora Customizations
+core = 7.x
+version = 7.x-dev
+dependencies[] = islandora_ip_embargo
+dependencies[] = islandora_solr

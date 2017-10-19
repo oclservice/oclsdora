@@ -6,6 +6,23 @@
  */
 
 /**
+ * Implements hook_menu().
+ */
+function oclsdora_menu() {
+  return array(
+    'ip_embargoed/%' => array(
+      'title' => 'IP Embargoed',
+      'description' => 'Endpoint serving up information about whether an item is IP embargoed.',
+      'page callback' => 'oclsdora_ip_embargoed_callback',
+      'page arguments' => array(1),
+      'access callback' => TRUE,
+      'file' => 'includes/ip_embargoed.inc',
+      'type' => MENU_CALLBACK,
+    ),
+  );
+}
+
+/**
  * Implements hook_islandora_xml_form_builder_form_associations().
  */
 function oclsdora_islandora_xml_form_builder_form_associations() {
@@ -322,6 +339,22 @@ function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
       'objects' => array_values($collections),
     ),
   );
+}
+
+/**
+ * Implements islandora_ip_embargo_set().
+ */
+function oclsdora_islandora_ip_embargo_set($pid, $parameters) {
+  module_load_include('inc', 'islandora_gsearcher', 'includes/utilities');
+  islandora_gsearcher_inform_gsearch($pid);
+}
+
+/**
+ * Implements islandora_ip_embargo_lifted().
+ */
+function oclsdora_islandora_ip_embargo_lifted($pid) {
+  module_load_include('inc', 'islandora_gsearcher', 'includes/utilities');
+  islandora_gsearcher_inform_gsearch($pid);
 }
 
 /**

@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations.
+ */
+
+const OCLSDORA_LEADER_SITE_BEHAVIOURS_IP_RESTRICTED_FIELD = "ocls_ip_embargoed_b";
+
+/**
+ * Implements hook_islandora_object_access().
+ */
+function oclsdora_leader_site_behaviours_islandora_object_access($op, $object, $user) {
+  module_load_include('inc', 'oclsdora_leader_site_behaviours', 'includes/utilities');
+  // If the object is an IP-restricted member object, we restrict it. Otherwise,
+  // we make no assertion as to whether it should be restricted.
+  return oclsdora_leader_site_behaviours_is_ip_restricted_member_object($object->id) ?
+    FALSE : NULL;
+}
+
+/**
+ * Implements hook_islandora_datastream_access().
+ */
+function oclsdora_leader_site_behaviours_islandora_datastream_access($op, AbstractDatastream $ds, $user) {
+  module_load_include('inc', 'oclsdora_leader_site_behaviours', 'includes/utilities');
+  return oclsdora_leader_site_behaviours_is_ip_restricted_member_object($ds->parent->id) ?
+    FALSE : NULL;
+}
+
+/**
+ * Implements hook_islandora_solr_query().
+ */
+function oclsdora_leader_site_behaviours_islandora_solr_query($query_processor) {
+  $fq = OCLSDORA_LEADER_SITE_BEHAVIOURS_IP_RESTRICTED_FIELD . ":false";
+  $query_processor->solrParams['fq'][] = $fq;
+}
