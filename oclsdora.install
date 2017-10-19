@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Install hooks.
+ * Install hooks for oclsdora.
  */
 
 /**
@@ -20,4 +20,3 @@ function oclsdora_uninstall() {
   module_load_include('inc', 'islandora', 'includes/solution_packs');
   islandora_install_solution_pack('oclsdora', 'uninstall');
 }
-
