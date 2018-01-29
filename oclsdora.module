@@ -234,7 +234,6 @@ function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
     'centennial',
     'loyalist',
     'georgian',
-    'niagara',
   );
 
   // Create objects.
@@ -258,7 +257,6 @@ function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
     'centennial' => 'Centennial',
     'loyalist' => 'Loyalist',
     'georgian' => 'Georgian',
-    'niagara' => 'Niagara',
   );
   foreach ($labels as $ns => $label) {
     $collections[$ns]->label = $label;
@@ -272,7 +270,6 @@ function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
     'centennial' => "$module_path/images/centennial_jpg.jpg",
     'loyalist' => "$module_path/images/loyalist_library.jpg",
     'georgian' => "$module_path/images/georgian_png.png",
-    'niagara' => "$module_path/images/niagara-college.png",
   );
 
   // Populate home page images.
@@ -283,7 +280,6 @@ function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
     'centennial' => "$module_path/images/front/centennial/centennial.jpg",
     'loyalist' => "$module_path/images/front/loyalist/loyalist.jpg",
     'georgian' => "$module_path/images/front/georgian/georgian.jpg",
-    'niagara' => "$module_path/images/front/niagara/niagara.jpg",
   );
   foreach ($front_images as $ns => $path) {
     $datastream = $collections[$ns]->constructDatastream('front', 'M');
@@ -311,7 +307,6 @@ function oclsdora_islandora_required_objects(IslandoraTuque $connection) {
     'centennial' => 'image/jpeg',
     'loyalist' => 'image/jpeg',
     'georgian' => 'image/png',
-    'niagara' => 'image/png',
   );
   foreach ($tns as $ns => $path) {
     $datastream = $collections[$ns]->constructDatastream('TN', 'M');
