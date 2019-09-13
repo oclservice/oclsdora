@@ -427,14 +427,22 @@ function oclsdora_form_islandora_guided_ingest_simplified_ingest_form_alter(arra
  *   The Drupal Form State.
  * @param array $form
  *   The Drupal Form.
+ *
+ * @return bool|null
+ *   False if the value doesn't match ISO 8601 format.
  */
 function oclsdora_iso8601_validate(array $element, array &$form_state, array $form) {
   if (!empty($element['#value'])) {
-    $date = new DateTime($element['#value']);
+    try {
+      $date = new DateTime($element['#value']);
+    }
+    catch (Exception $e) {
+      return form_error($element, t('!element must be a date formatted in ISO 8601', array('!element' => $element['#title'])));
+    }
     // Check if the element's value does not match a subset of ISO 8601 formats
     // (ex: 1990-01-01 or 1990-01-01T00:00:00-0400).
     if ($date->format("Y-m-d") !== $element['#value'] && $date->format("Y-m-d\TH:i:sO") !== $element['#value']) {
-      form_error($element, t('!element must be formatted in ISO 8601', array('!element' => $element['#title'])));
+      return form_error($element, t('!element must be formatted in ISO 8601', array('!element' => $element['#title'])));
     }
   }
 }
