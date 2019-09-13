@@ -119,7 +119,7 @@ function oclsdora_islandora_xml_form_builder_form_associations() {
     ),
   );
   // Build up associations for Base MODS form & OCLS MODS Submission forms.
-  $models = array(
+  $base_models = array(
     'audio' => 'islandora:sp-audioCModel',
     'video' => 'islandora:sp_videoCModel',
     'pdf' => 'islandora:sp_pdf',
@@ -129,6 +129,8 @@ function oclsdora_islandora_xml_form_builder_form_associations() {
     'book' => 'islandora:bookCModel',
     'basic_image' => 'islandora:sp_basic_image',
     'document' => 'islandora:sp_document_collection',
+  );
+  $submission_models = $base_models + array(
     'compound' => 'islandora:compoundCModel',
   );
   $mods_base = array(
@@ -147,10 +149,12 @@ function oclsdora_islandora_xml_form_builder_form_associations() {
     'self_transform' => 'islandora_cleanup_mods_extended.xsl',
     'template' => FALSE,
   );
-  foreach ($models as $key => $model) {
+  foreach ($base_models as $key => $model) {
     $associations["base_mods_$key"] = array(
       'content_model' => $model,
     ) + $mods_base;
+  }
+  foreach ($submission_models as $key => $model) {
     $associations["ocls_submission_mods_$key"] = array(
       'content_model' => $model,
     ) + $ocls_mods_submission;
