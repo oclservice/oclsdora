@@ -425,7 +425,7 @@ function oclsdora_form_islandora_guided_ingest_simplified_ingest_form_alter(arra
  *   The Drupal Form.
  */
 function oclsdora_iso8601_validate(array $element, array &$form_state, array $form) {
-  if (empty($element['#value'])) {
+  if (!empty($element['#value'])) {
     $date = new DateTime($element['#value']);
     // Check if the element's value is in ISO 8601 format (ex: 1990-10-02).
     if ($date->format("Y-m-d\TH:i:sO") !== $element['#value'] || $date->format("Y-m-d") !== $element['#value']) {
