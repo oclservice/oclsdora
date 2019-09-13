@@ -118,6 +118,7 @@ function oclsdora_islandora_xml_form_builder_form_associations() {
       'template' => FALSE,
     ),
   );
+  // Build up associations for Base MODS form & OCLS MODS Submission forms.
   $base_models = array(
     'audio' => 'islandora:sp-audioCModel',
     'video' => 'islandora:sp_videoCModel',
@@ -129,6 +130,9 @@ function oclsdora_islandora_xml_form_builder_form_associations() {
     'basic_image' => 'islandora:sp_basic_image',
     'document' => 'islandora:sp_document_collection',
   );
+  $submission_models = $base_models + array(
+    'compound' => 'islandora:compoundCModel',
+  );
   $mods_base = array(
     'form_name' => 'OCLS Base MODS Form',
     'dsid' => 'MODS',
@@ -137,10 +141,23 @@ function oclsdora_islandora_xml_form_builder_form_associations() {
     'template' => FALSE,
     'self_transform' => 'islandora_cleanup_mods_extended.xsl',
   );
+  $ocls_mods_submission = array(
+    'form_name' => 'OCLS Submission MODS Form',
+    'dsid' => 'MODS',
+    'title_field' => array('titles_fieldset', 'titleInfo', '0', 'title'),
+    'transform' => 'mods_to_dc.xsl',
+    'self_transform' => 'islandora_cleanup_mods_extended.xsl',
+    'template' => FALSE,
+  );
   foreach ($base_models as $key => $model) {
     $associations["base_mods_$key"] = array(
       'content_model' => $model,
     ) + $mods_base;
+  }
+  foreach ($submission_models as $key => $model) {
+    $associations["ocls_submission_mods_$key"] = array(
+      'content_model' => $model,
+    ) + $ocls_mods_submission;
   }
   return $associations;
 }
@@ -177,6 +194,9 @@ function oclsdora_islandora_xml_form_builder_forms() {
     ),
     'OCLS Base MODS Form' => array(
       'form_file' => "$module_path/xml/ocls_base_mods_form.xml",
+    ),
+    'OCLS Submission MODS Form' => array(
+      'form_file' => "$module_path/xml/ocls_submission_mods_form.xml",
     ),
   );
 }
@@ -396,4 +416,33 @@ function oclsdora_form_islandora_guided_ingest_simplified_ingest_form_alter(arra
     'type' => 'file',
     'data' => drupal_get_path('module', 'oclsdora') . '/js/tab_nav.js',
   );
+}
+
+/**
+ * Helper function to validate a Drupal form element ISO 8601 value.
+ *
+ * @param array $element
+ *   The Drupal Form element to validate.
+ * @param array $form_state
+ *   The Drupal Form State.
+ * @param array $form
+ *   The Drupal Form.
+ *
+ * @return bool|null
+ *   False if the value doesn't match ISO 8601 format.
+ */
+function oclsdora_iso8601_validate(array $element, array &$form_state, array $form) {
+  if (!empty($element['#value'])) {
+    try {
+      $date = new DateTime($element['#value']);
+    }
+    catch (Exception $e) {
+      return form_error($element, t('Enter a date in the format: YYYY-MM-DD for !element', array('!element' => $element['#title'])));
+    }
+    // Check if the element's value does not match a subset of ISO 8601 formats
+    // (ex: 1990-01-01 or 1990-01-01T00:00:00-0400).
+    if ($date->format("Y-m-d") !== $element['#value'] && $date->format("Y-m-d\TH:i:sO") !== $element['#value']) {
+      return form_error($element, t('Enter a date in the format: YYYY-MM-DD for !element', array('!element' => $element['#title'])));
+    }
+  }
 }
