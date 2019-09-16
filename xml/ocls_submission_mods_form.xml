@@ -164,10 +164,10 @@
                           <schema/>
                           <type>attribute</type>
                           <prefix>NULL</prefix>
-                          <value>language</value>
+                          <value>lang</value>
                         </create>
                         <read>
-                          <path>@language</path>
+                          <path>@lang</path>
                           <context>parent</context>
                         </read>
                         <update>
@@ -598,10 +598,10 @@
                           <schema/>
                           <type>xml</type>
                           <prefix>NULL</prefix>
-                          <value>&lt;role&gt;&lt;roleTerm&gt;%value%&lt;/roleTerm&gt;&lt;/role&gt;</value>
+                          <value>&lt;role&gt;&lt;roleTerm type="text"&gt;%value%&lt;/roleTerm&gt;&lt;/role&gt;</value>
                         </create>
                         <read>
-                          <path>mods:role/mods:roleTerm</path>
+                          <path>mods:role/mods:roleTerm[@type = 'text']</path>
                           <context>parent</context>
                         </read>
                         <update>
@@ -746,10 +746,10 @@
                           <schema/>
                           <type>xml</type>
                           <prefix>NULL</prefix>
-                          <value>&lt;namePart type="termOfAddress"&gt;%value%&lt;/namePart&gt;</value>
+                          <value>&lt;namePart type="termsOfAddress"&gt;%value%&lt;/namePart&gt;</value>
                         </create>
                         <read>
-                          <path>mods:namePart[@type = 'termOfAddress']</path>
+                          <path>mods:namePart[@type = 'termsOfAddress']</path>
                           <context>parent</context>
                         </read>
                         <update>
@@ -966,10 +966,10 @@
                   <schema/>
                   <type>xml</type>
                   <prefix>NULL</prefix>
-                  <value>&lt;extent type="page"&gt;&lt;start&gt;%value%&lt;/start&gt;&lt;/extent&gt;</value>
+                  <value>&lt;extent unit="page"&gt;&lt;start&gt;%value%&lt;/start&gt;&lt;/extent&gt;</value>
                 </create>
                 <read>
-                  <path>mods:extent[@type = 'page']/mods:start</path>
+                  <path>mods:extent[@unit = 'page']/mods:start</path>
                   <context>parent</context>
                 </read>
                 <update>
@@ -1003,10 +1003,10 @@
                   <schema/>
                   <type>xml</type>
                   <prefix>NULL</prefix>
-                  <value>&lt;extent type="page"&gt;&lt;end&gt;%value%&lt;/end&gt;&lt;/extent&gt;</value>
+                  <value>&lt;extent unit="page"&gt;&lt;end&gt;%value%&lt;/end&gt;&lt;/extent&gt;</value>
                 </create>
                 <read>
-                  <path>mods:extent[@type = 'page']/mods:end</path>
+                  <path>mods:extent[@unit = 'page']/mods:end</path>
                   <context>parent</context>
                 </read>
                 <update>
@@ -3142,10 +3142,10 @@
                       <schema/>
                       <type>xml</type>
                       <prefix>NULL</prefix>
-                      <value>&lt;genre marcauthority="marcgt"&gt;%value%&lt;/genre&gt;</value>
+                      <value>&lt;genre authority="marcgt"&gt;%value%&lt;/genre&gt;</value>
                     </create>
                     <read>
-                      <path>mods:genre[@marcauthority = 'marcgt']</path>
+                      <path>mods:genre[@authority = 'marcgt']</path>
                       <context>parent</context>
                     </read>
                     <update>NULL</update>
