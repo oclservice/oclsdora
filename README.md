@@ -26,10 +26,26 @@ Current maintainers:
 
 ## Development
 
-If you would like to contribute to this module, please check out our helpful
-[Documentation for Developers](https://github.com/Islandora/islandora/wiki#wiki-documentation-for-developers)
-info, [Developers](http://islandora.ca/developers) section on Islandora.ca and
-contact [discoverygarden](http://support.discoverygarden.ca).
+### Working with this and other git codebases
+
+Best practices dictate the following workflow when working with git repository
+code:
+
+* Create a fork of the codebase to your own personal GitHub account using the
+**Fork** button; this makes it much easier to keep track of who is working on
+a git repository by simply looking at the fork tree.
+* Checkout a 'feature branch' on your personal fork to start working in. Don't
+simply work from the same branch that exists on the main fork. This ensures even
+further that it's clear who is working on what, and allows for development on
+multiple features simultaneously.
+* Work locally in that 'feature branch', then add any new files and commit
+changes using a descriptive commit message
+* Push that commit back to your personal fork of the codebase
+* Create a pull request on GitHub requesting the merge of the changed code on
+your personal fork/branch into the main codebase.
+
+Automatic messaging features are set up on OCLS GitHub repositories that will
+notify discoverygarden of requests to features so they can be reviewed.
 
 ## License
 
