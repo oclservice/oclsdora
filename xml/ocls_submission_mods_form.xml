@@ -148,10 +148,10 @@
                       <executes_submit_callback>FALSE</executes_submit_callback>
                       <multiple>FALSE</multiple>
                       <options>
+                        <index key="">(none)</index>
                         <index key="en-ca">English</index>
                         <index key="fr-ca">French</index>
                         <index key="pt-br">Portuguese</index>
-                        <index key="">(none)</index>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
@@ -540,6 +540,7 @@
                       <executes_submit_callback>FALSE</executes_submit_callback>
                       <multiple>FALSE</multiple>
                       <options>
+                        <index key="">(none)</index>
                         <Administrator>Administrator</Administrator>
                         <Advisor>Advisor</Advisor>
                         <Architect>Architect</Architect>
@@ -2875,17 +2876,18 @@
               <executes_submit_callback>FALSE</executes_submit_callback>
               <multiple>FALSE</multiple>
               <options>
-                <text>text</text>
-                <cartographic>cartographic</cartographic>
-                <index key="notated music">notated music</index>
-                <index key="sound recording">sound recording</index>
-                <index key="sound recording-musical">sound recording-musical</index>
-                <index key="sound recording-nonmusical">sound recording-nonmusical</index>
-                <index key="still image">still image</index>
-                <index key="moving image">moving image</index>
-                <index key="three dimensional object">three dimensional object</index>
-                <index key="software, multimedia">software, multimedia</index>
-                <index key="mixed material">mixed material</index>
+                <index key="">(none)</index>
+                <text>Text</text>
+                <cartographic>Cartographic</cartographic>
+                <index key="notated music">Notated Music</index>
+                <index key="sound recording">Sound Recording</index>
+                <index key="sound recording-musical">Sound Recording-Musical</index>
+                <index key="sound recording-nonmusical">Sound Recording-Nonmusical</index>
+                <index key="still image">Still Image</index>
+                <index key="moving image">Moving Image</index>
+                <index key="three dimensional object">Three Dimensional Object</index>
+                <index key="software, multimedia">Software, Multimedia</index>
+                <index key="mixed material">Mixed Material</index>
               </options>
               <required>TRUE</required>
               <resizable>FALSE</resizable>
