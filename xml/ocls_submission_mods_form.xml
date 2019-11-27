@@ -3141,9 +3141,9 @@
                   <multiple>FALSE</multiple>
                   <options>
                     <index key="">(none)</index>
-                    <approximate>approximate</approximate>
-                    <inferred>inferred</inferred>
-                    <questionable>questionable</questionable>
+                    <approximate>Approximate</approximate>
+                    <inferred>Inferred</inferred>
+                    <questionable>Questionable</questionable>
                   </options>
                   <required>FALSE</required>
                   <resizable>FALSE</resizable>
@@ -3249,9 +3249,9 @@
                   <multiple>FALSE</multiple>
                   <options>
                     <index key="">(none)</index>
-                    <approximate>approximate</approximate>
-                    <inferred>inferred</inferred>
-                    <questionable>questionable</questionable>
+                    <approximate>Approximate</approximate>
+                    <inferred>Inferred</inferred>
+                    <questionable>Questionable</questionable>
                   </options>
                   <required>FALSE</required>
                   <resizable>FALSE</resizable>
@@ -4848,11 +4848,11 @@
                       <executes_submit_callback>FALSE</executes_submit_callback>
                       <multiple>FALSE</multiple>
                       <options>
-                        <lccn>local</lccn>
-                        <doi>doi</doi>
-                        <isbn>isbn</isbn>
-                        <isni>isni</isni>
-                        <issn>issn</issn>
+                        <lccn>Local</lccn>
+                        <doi>DOI</doi>
+                        <isbn>ISBN</isbn>
+                        <isni>ISNI</isni>
+                        <issn>ISSN</issn>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
