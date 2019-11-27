@@ -2891,6 +2891,7 @@
               </options>
               <required>TRUE</required>
               <resizable>FALSE</resizable>
+              <title>Type of Resource</title>
               <tree>TRUE</tree>
               <actions>
                 <create>
@@ -3511,7 +3512,6 @@
               <collapsible>FALSE</collapsible>
               <disabled>FALSE</disabled>
               <executes_submit_callback>FALSE</executes_submit_callback>
-              <maxlength>256</maxlength>
               <multiple>FALSE</multiple>
               <options>
                 <monographic>Monographic</monographic>
@@ -3523,7 +3523,6 @@
               </options>
               <required>FALSE</required>
               <resizable>FALSE</resizable>
-              <size>60</size>
               <title>Issuance</title>
               <tree>TRUE</tree>
               <actions>
@@ -3556,7 +3555,6 @@
               <collapsible>FALSE</collapsible>
               <disabled>FALSE</disabled>
               <executes_submit_callback>FALSE</executes_submit_callback>
-              <maxlength>256</maxlength>
               <multiple>FALSE</multiple>
               <options>
                 <daily>Daily</daily>
@@ -3578,7 +3576,6 @@
               </options>
               <required>FALSE</required>
               <resizable>FALSE</resizable>
-              <size>60</size>
               <title>Frequency</title>
               <tree>TRUE</tree>
               <actions>
@@ -3865,7 +3862,7 @@
               <executes_submit_callback>FALSE</executes_submit_callback>
               <multiple>FALSE</multiple>
               <options>
-                <index key="(none)">(none)</index>
+                <index key="">(none)</index>
                 <index key="application/msword">application/msword</index>
                 <index key="application/pdf">application/pdf</index>
                 <index key="application/vnd.ms-excel">application/vnd.ms-excel</index>
@@ -3919,11 +3916,12 @@
               <access>TRUE</access>
               <collapsed>FALSE</collapsed>
               <collapsible>FALSE</collapsible>
-              <default_value>born digital</default_value>
+              <default_value>(none)</default_value>
               <disabled>FALSE</disabled>
               <executes_submit_callback>FALSE</executes_submit_callback>
               <multiple>FALSE</multiple>
               <options>
+                <index key="">(none)</index>
                 <index key="born digital">Born Digital</index>
                 <index key="digitized microfilm">Digitized Microfilm</index>
                 <index key="digitized other analog">Digitized Other Analog</index>
@@ -4069,9 +4067,6 @@
                       <collapsible>FALSE</collapsible>
                       <default_value>(none)</default_value>
                       <disabled>FALSE</disabled>
-                      <element_validate>
-                        <index key="0"/>
-                      </element_validate>
                       <executes_submit_callback>FALSE</executes_submit_callback>
                       <multiple>FALSE</multiple>
                       <options>
