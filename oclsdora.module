@@ -442,7 +442,7 @@ function oclsdora_iso8601_validate(array $element, array &$form_state, array $fo
       }
     }
     catch (Exception $e) {
-      //If date isn't XXXX/XXXX format, return error
+      // Check if the element's value does not match YYYY/YYYY format.
       if (!preg_match('/^[0-9]{4}\/[0-9]{4}$/', $element['#value'])) {
         return form_error($element, t('Enter a date in the format: YYYY-MM-DD, YYYY or YYYY/YYYY for !element', array('!element' => $element['#title'])));
       }
