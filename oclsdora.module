@@ -435,14 +435,17 @@ function oclsdora_iso8601_validate(array $element, array &$form_state, array $fo
   if (!empty($element['#value'])) {
     try {
       $date = new DateTime($element['#value']);
+      // Check if the element's value does not match a subset of ISO 8601 formats
+      // (ex: 1990-01-01 or 1990-01-01T00:00:00-0400 or 1990 or 1990/1999).
+      if ($date->format("Y-m-d") !== $element['#value'] && $date->format("Y-m-d\TH:i:sO") !== $element['#value'] && $date->format("Y") !== $element['#value']) {
+        return form_error($element, t('Enter a date in the format: YYYY-MM-DD, YYYY or YYYY/YYYY for !element', array('!element' => $element['#title'])));
+      }
     }
     catch (Exception $e) {
-      return form_error($element, t('Enter a date in the format: YYYY-MM-DD for !element', array('!element' => $element['#title'])));
-    }
-    // Check if the element's value does not match a subset of ISO 8601 formats
-    // (ex: 1990-01-01 or 1990-01-01T00:00:00-0400 or 1990).
-    if ($date->format("Y-m-d") !== $element['#value'] && $date->format("Y-m-d\TH:i:sO") !== $element['#value'] && $date->format("Y") !== $element['#value']) {
-      return form_error($element, t('Enter a date in the format: YYYY-MM-DD for !element', array('!element' => $element['#title'])));
+      //If date isn't XXXX/XXXX format, return error
+      if (!preg_match('/^[0-9]{4}\/[0-9]{4}$/', $element['#value'])) {
+        return form_error($element, t('Enter a date in the format: YYYY-MM-DD, YYYY or YYYY/YYYY for !element', array('!element' => $element['#title'])));
+      }
     }
   }
 }

@@ -2268,7 +2268,7 @@
                       <access>TRUE</access>
                       <collapsed>FALSE</collapsed>
                       <collapsible>FALSE</collapsible>
-                      <description>Enter dates in the format YYYY-MM-DD or YYYY.</description>
+                      <description>Enter dates in the format YYYY-MM-DD, YYYY or YYYY/YYYY.</description>
                       <disabled>FALSE</disabled>
                       <element_validate>
                         <index key="0">oclsdora_iso8601_validate</index>
@@ -3177,7 +3177,7 @@
                   <access>TRUE</access>
                   <collapsed>FALSE</collapsed>
                   <collapsible>FALSE</collapsible>
-                  <description>Enter dates in the format YYYY-MM-DD or YYYY.</description>
+                  <description>Enter dates in the format YYYY-MM-DD, YYYY or YYYY/YYYY.</description>
                   <disabled>FALSE</disabled>
                   <element_validate>
                     <index key="0">oclsdora_iso8601_validate</index>
@@ -3285,7 +3285,7 @@
                   <access>TRUE</access>
                   <collapsed>FALSE</collapsed>
                   <collapsible>FALSE</collapsible>
-                  <description>Enter dates in the format YYYY-MM-DD or YYYY.</description>
+                  <description>Enter dates in the format YYYY-MM-DD, YYYY or YYYY/YYYY.</description>
                   <disabled>FALSE</disabled>
                   <element_validate>
                     <index key="0">oclsdora_iso8601_validate</index>
@@ -3321,7 +3321,7 @@
               <access>TRUE</access>
               <collapsed>FALSE</collapsed>
               <collapsible>FALSE</collapsible>
-              <description>Enter dates in the format YYYY-MM-DD or YYYY.</description>
+              <description>Enter dates in the format YYYY-MM-DD, YYYY or YYYY/YYYY.</description>
               <disabled>FALSE</disabled>
               <element_validate>
                 <index key="0">oclsdora_iso8601_validate</index>
@@ -3362,7 +3362,7 @@
               <access>TRUE</access>
               <collapsed>FALSE</collapsed>
               <collapsible>FALSE</collapsible>
-              <description>Enter dates in the format YYYY-MM-DD or YYYY.</description>
+              <description>Enter dates in the format YYYY-MM-DD, YYYY or YYYY/YYYY.</description>
               <disabled>FALSE</disabled>
               <element_validate>
                 <index key="0">oclsdora_iso8601_validate</index>
