@@ -464,7 +464,7 @@
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
-                      <title>Type</title>
+                      <title>Name Type</title>
                       <tree>TRUE</tree>
                       <actions>
                         <create>
@@ -3561,6 +3561,7 @@
               <executes_submit_callback>FALSE</executes_submit_callback>
               <multiple>FALSE</multiple>
               <options>
+                <index key="continuously updated">Continuously Updated</index>
                 <daily>Daily</daily>
                 <semiweekly>Semiweekly</semiweekly>
                 <index key="three times a week">Three Times a Week</index>
