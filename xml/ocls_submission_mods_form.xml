@@ -143,15 +143,15 @@
                       <access>TRUE</access>
                       <collapsed>FALSE</collapsed>
                       <collapsible>FALSE</collapsible>
-                      <default_value>en-ca</default_value>
+                      <default_value>(none)</default_value>
                       <disabled>FALSE</disabled>
                       <executes_submit_callback>FALSE</executes_submit_callback>
                       <multiple>FALSE</multiple>
                       <options>
-                        <index key="en-ca">English</index>
-                        <index key="fr-ca">French</index>
-                        <index key="pt-br">Portuguese</index>
                         <index key="">(none)</index>
+                        <index key="English">English</index>
+                        <index key="French">French</index>
+                        <index key="Portuguese">Portuguese</index>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
@@ -3820,9 +3820,9 @@
                       <multiple>FALSE</multiple>
                       <options>
                         <index key="">(none)</index>
-                        <index key="en-ca">English</index>
-                        <index key="fr-ca">French</index>
-                        <index key="pt-br">Portuguese</index>
+                        <index key="English">English</index>
+                        <index key="French">French</index>
+                        <index key="Portuguese">Portuguese</index>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
