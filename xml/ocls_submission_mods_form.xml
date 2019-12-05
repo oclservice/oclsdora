@@ -149,9 +149,9 @@
                       <multiple>FALSE</multiple>
                       <options>
                         <index key="">(none)</index>
-                        <index key="English">English</index>
-                        <index key="French">French</index>
-                        <index key="Portuguese">Portuguese</index>
+                        <index key="en-ca">English</index>
+                        <index key="fr-ca">French</index>
+                        <index key="pt-br">Portuguese</index>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
@@ -3820,9 +3820,9 @@
                       <multiple>FALSE</multiple>
                       <options>
                         <index key="">(none)</index>
-                        <index key="English">English</index>
-                        <index key="French">French</index>
-                        <index key="Portuguese">Portuguese</index>
+                        <English>English</English>
+                        <French>French</French>
+                        <Portuguese>Portuguese</Portuguese>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
