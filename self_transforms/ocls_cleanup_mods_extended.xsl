@@ -21,7 +21,7 @@
     </xsl:template>
 
     <!-- any /mods/language containing a language text term should have the code as well -->
-    <xsl:template match="mods:language[mods:languageTerm[@type = 'text'][normalize-space()]]" exclude-result-prefixes="#all">
+    <xsl:template match="mods:language[mods:languageTerm[@type = 'text'][normalize-space()]]">
         <xsl:variable name="langTerm" select="normalize-space(mods:languageTerm[@type = 'text'])"/>
         <xsl:choose>
             <!-- make sure the language term is in the map first -->
