@@ -446,3 +446,12 @@ function oclsdora_iso8601_validate(array $element, array &$form_state, array $fo
     }
   }
 }
+
+/**
+ * Implements hook_xml_form_builder_get_self_transforms().
+ */
+function oclsdora_xml_form_builder_get_self_transforms() {
+  return array(
+    'ocls_cleanup_mods_extended.xsl' => 'sites/all/modules/oclsdora/self_transforms/ocls_cleanup_mods_extended.xsl',
+  );
+}
