@@ -31,22 +31,24 @@
 
     <!-- map of textual language terms to codes -->
         <!-- any /mods/language containing a language text term should have the code as well -->
-    <xsl:template match="mods:language[mods:languageTerm[@type = 'text'][normalize-space()]]">
-        <xsl:variable name="langTerm" select="normalize-space(mods:languageTerm[@type = 'text'])"/>
-        <xsl:choose>
-            <!-- make sure the language term is in the map first -->
-            <xsl:when test="exsl:node-set($lang-term-to-code)/langTerms/langTerm[term[. = $langTerm]]">
-                <language xmlns="http://www.loc.gov/mods/v3">
-                    <!-- keep the text -->
-                    <xsl:copy-of select="mods:languageTerm[@type = 'text']"/>
-                    <languageTerm authority="rfc3066" type="code"><xsl:value-of select="exsl:node-set($lang-term-to-code)/langTerms/langTerm[term[. = $langTerm]]/code"/></languageTerm>
-                </language>
-            </xsl:when>
-            <!-- otherwise just pass it through -->
-            <xsl:otherwise>
-                <xsl:copy-of select="."/>
-            </xsl:otherwise>
-        </xsl:choose>
+    <xsl:template match="mods:language">
+        <xsl:if test="not(self::node()[mods:languageTerm[@type = 'code'] and not(mods:languageTerm[@type='text'])])">
+            <xsl:variable name="langTerm" select="normalize-space(mods:languageTerm[@type = 'text'])"/>
+            <xsl:choose>
+                <!-- make sure the language term is in the map first -->
+                <xsl:when test="exsl:node-set($lang-term-to-code)/langTerms/langTerm[term[. = $langTerm]]">
+                    <language xmlns="http://www.loc.gov/mods/v3">
+                        <!-- keep the text -->
+                        <xsl:copy-of select="mods:languageTerm[@type = 'text']"/>
+                        <languageTerm authority="rfc3066" type="code"><xsl:value-of select="exsl:node-set($lang-term-to-code)/langTerms/langTerm[term[. = $langTerm]]/code"/></languageTerm>
+                    </language>
+                </xsl:when>
+                <!-- otherwise just pass it through -->
+                <xsl:otherwise>
+                    <xsl:copy-of select="."/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:if>
     </xsl:template>
 
     <xsl:template match="mods:location">
