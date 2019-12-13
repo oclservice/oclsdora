@@ -32,7 +32,7 @@
     <!-- map of textual language terms to codes -->
         <!-- any /mods/language containing a language text term should have the code as well -->
     <xsl:template match="mods:language">
-        <xsl:if test="not(self::node()[mods:languageTerm[@type = 'code'] and not(mods:languageTerm[@type='text'])])">
+        <xsl:if test="not(self::node()[mods:languageTerm[@type = 'code'] and not(normalize-space(mods:languageTerm[@type='text']))])">
             <xsl:variable name="langTerm" select="normalize-space(mods:languageTerm[@type = 'text'])"/>
             <xsl:choose>
                 <!-- make sure the language term is in the map first -->
