@@ -1427,9 +1427,9 @@
                       <executes_submit_callback>FALSE</executes_submit_callback>
                       <multiple>FALSE</multiple>
                       <options>
-                        <marccountry>marccountry</marccountry>
-                        <marcgac>marcgac</marcgac>
-                        <iso3166>iso3166</iso3166>
+                        <marccountry>MARC Country</marccountry>
+                        <marcgac>MARC GAC</marcgac>
+                        <iso3166>ISO 3166</iso3166>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
