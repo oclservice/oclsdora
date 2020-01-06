@@ -3518,6 +3518,7 @@
               <executes_submit_callback>FALSE</executes_submit_callback>
               <multiple>FALSE</multiple>
               <options>
+                <index key="">(none)</index>
                 <monographic>Monographic</monographic>
                 <index key="single unit">Single Unit</index>
                 <index key="multipart monograph">Multipart Monograph</index>
@@ -3561,6 +3562,7 @@
               <executes_submit_callback>FALSE</executes_submit_callback>
               <multiple>FALSE</multiple>
               <options>
+                <index key="">(none)</index>
                 <index key="continuously updated">Continuously Updated</index>
                 <daily>Daily</daily>
                 <semiweekly>Semiweekly</semiweekly>
