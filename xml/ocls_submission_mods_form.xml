@@ -3407,7 +3407,7 @@
               <executes_submit_callback>FALSE</executes_submit_callback>
               <maxlength>256</maxlength>
               <multiple>FALSE</multiple>
-              <required>FALSE</required>
+              <required>TRUE</required>
               <resizable>FALSE</resizable>
               <size>60</size>
               <title>Place of Publication</title>
