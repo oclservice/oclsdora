@@ -146,7 +146,7 @@ function oclsdora_islandora_xml_form_builder_form_associations() {
     'dsid' => 'MODS',
     'title_field' => array('titles_fieldset', 'titleInfo', '0', 'title'),
     'transform' => 'mods_to_dc.xsl',
-    'self_transform' => 'islandora_cleanup_mods_extended.xsl',
+    'self_transform' => 'ocls_cleanup_mods_extended.xslt',
     'template' => FALSE,
   );
   foreach ($base_models as $key => $model) {
@@ -445,4 +445,13 @@ function oclsdora_iso8601_validate(array $element, array &$form_state, array $fo
       return form_error($element, t('Enter a date in the format: YYYY-MM-DD for !element', array('!element' => $element['#title'])));
     }
   }
+}
+
+/**
+ * Implements hook_xml_form_builder_get_self_transforms().
+ */
+function oclsdora_xml_form_builder_get_self_transforms() {
+  return array(
+    'ocls_cleanup_mods_extended.xslt' => 'sites/all/modules/oclsdora/self_transforms/ocls_cleanup_mods_extended.xslt',
+  );
 }

@@ -3798,13 +3798,20 @@
                   <resizable>FALSE</resizable>
                   <tree>TRUE</tree>
                   <actions>
-                    <create>NULL</create>
-                    <read>NULL</read>
-                    <update>NULL</update>
-                    <delete>
+                    <create>
                       <path>self::node()</path>
-                      <context>self</context>
-                    </delete>
+                      <context>parent</context>
+                      <schema/>
+                      <type>xml</type>
+                      <prefix>NULL</prefix>
+                      <value>&lt;language&gt;&lt;languageTerm type="text"&gt;%value%&lt;/languageTerm&gt;&lt;/language&gt;</value>
+                    </create>
+                    <read>
+                      <path>mods:language/mods:languageTerm[@type = 'text']</path>
+                      <context>parent</context>
+                    </read>
+                    <update>NULL</update>
+                    <delete>NULL</delete>
                   </actions>
                 </properties>
                 <children>
@@ -3820,32 +3827,28 @@
                       <multiple>FALSE</multiple>
                       <options>
                         <index key="">(none)</index>
-                        <index key="en-ca">English</index>
-                        <index key="fr-ca">French</index>
-                        <index key="pt-br">Portuguese</index>
+                        <English>English</English>
+                        <French>French</French>
+                        <Portuguese>Portuguese</Portuguese>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
                       <title>Language</title>
                       <tree>TRUE</tree>
                       <actions>
-                        <create>
-                          <path>self::node()</path>
-                          <context>parent</context>
-                          <schema/>
-                          <type>xml</type>
-                          <prefix>NULL</prefix>
-                          <value>&lt;language&gt;&lt;languageTerm type="text"&gt;%value%&lt;/languageTerm&gt;&lt;/language&gt;</value>
-                        </create>
+                        <create>NULL</create>
                         <read>
-                          <path>mods:language/mods:languageTerm[@type = 'text']</path>
+                          <path>self::node()</path>
                           <context>parent</context>
                         </read>
                         <update>
                           <path>self::node()</path>
-                          <context>self</context>
+                          <context>parent</context>
                         </update>
-                        <delete>NULL</delete>
+                        <delete>
+                          <path>..</path>
+                          <context>parent</context>
+                        </delete>
                       </actions>
                     </properties>
                     <children/>
