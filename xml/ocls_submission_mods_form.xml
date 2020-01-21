@@ -143,15 +143,15 @@
                       <access>TRUE</access>
                       <collapsed>FALSE</collapsed>
                       <collapsible>FALSE</collapsible>
-                      <default_value>en-ca</default_value>
+                      <default_value>(none)</default_value>
                       <disabled>FALSE</disabled>
                       <executes_submit_callback>FALSE</executes_submit_callback>
                       <multiple>FALSE</multiple>
                       <options>
+                        <index key="">(none)</index>
                         <index key="en-ca">English</index>
                         <index key="fr-ca">French</index>
                         <index key="pt-br">Portuguese</index>
-                        <index key="">(none)</index>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
@@ -464,6 +464,7 @@
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
+                      <title>Name Type</title>
                       <tree>TRUE</tree>
                       <actions>
                         <create>
@@ -534,11 +535,12 @@
                       <access>TRUE</access>
                       <collapsed>FALSE</collapsed>
                       <collapsible>FALSE</collapsible>
-                      <default_value>Administrator</default_value>
+                      <default_value>(none)</default_value>
                       <disabled>FALSE</disabled>
                       <executes_submit_callback>FALSE</executes_submit_callback>
                       <multiple>FALSE</multiple>
                       <options>
+                        <index key="">(none)</index>
                         <Administrator>Administrator</Administrator>
                         <Advisor>Advisor</Advisor>
                         <Architect>Architect</Architect>
@@ -839,187 +841,6 @@
           </element>
         </children>
       </element>
-      <element name="part_fieldset">
-        <properties>
-          <type>fieldset</type>
-          <access>TRUE</access>
-          <collapsed>FALSE</collapsed>
-          <collapsible>FALSE</collapsible>
-          <disabled>FALSE</disabled>
-          <executes_submit_callback>FALSE</executes_submit_callback>
-          <multiple>FALSE</multiple>
-          <required>FALSE</required>
-          <resizable>FALSE</resizable>
-          <title>Part</title>
-          <tree>TRUE</tree>
-          <actions>
-            <create>
-              <path>self::node()</path>
-              <context>parent</context>
-              <schema/>
-              <type>element</type>
-              <prefix>NULL</prefix>
-              <value>part</value>
-            </create>
-            <read>
-              <path>mods:part</path>
-              <context>parent</context>
-            </read>
-            <update>NULL</update>
-            <delete>NULL</delete>
-          </actions>
-        </properties>
-        <children>
-          <element name="volume">
-            <properties>
-              <type>textfield</type>
-              <access>TRUE</access>
-              <collapsed>FALSE</collapsed>
-              <collapsible>FALSE</collapsible>
-              <disabled>FALSE</disabled>
-              <executes_submit_callback>FALSE</executes_submit_callback>
-              <maxlength>256</maxlength>
-              <multiple>FALSE</multiple>
-              <required>FALSE</required>
-              <resizable>FALSE</resizable>
-              <size>24</size>
-              <title>Volume</title>
-              <tree>TRUE</tree>
-              <actions>
-                <create>
-                  <path>self::node()</path>
-                  <context>parent</context>
-                  <schema/>
-                  <type>xml</type>
-                  <prefix>NULL</prefix>
-                  <value>&lt;detail type="volume"&gt;&lt;number&gt;%value%&lt;/number&gt;&lt;/detail&gt;</value>
-                </create>
-                <read>
-                  <path>mods:detail[@type = 'volume']/mods:number</path>
-                  <context>parent</context>
-                </read>
-                <update>
-                  <path>self::node()</path>
-                  <context>self</context>
-                </update>
-                <delete>NULL</delete>
-              </actions>
-            </properties>
-            <children/>
-          </element>
-          <element name="issue">
-            <properties>
-              <type>textfield</type>
-              <access>TRUE</access>
-              <collapsed>FALSE</collapsed>
-              <collapsible>FALSE</collapsible>
-              <disabled>FALSE</disabled>
-              <executes_submit_callback>FALSE</executes_submit_callback>
-              <maxlength>256</maxlength>
-              <multiple>FALSE</multiple>
-              <required>FALSE</required>
-              <resizable>FALSE</resizable>
-              <size>24</size>
-              <title>Issue</title>
-              <tree>TRUE</tree>
-              <actions>
-                <create>
-                  <path>self::node()</path>
-                  <context>parent</context>
-                  <schema/>
-                  <type>xml</type>
-                  <prefix>NULL</prefix>
-                  <value>&lt;detail type="issue"&gt;&lt;number&gt;%value%&lt;/number&gt;&lt;/detail&gt;</value>
-                </create>
-                <read>
-                  <path>mods:detail[@type = 'issue']/mods:number</path>
-                  <context>parent</context>
-                </read>
-                <update>
-                  <path>self::node()</path>
-                  <context>self</context>
-                </update>
-                <delete>NULL</delete>
-              </actions>
-            </properties>
-            <children/>
-          </element>
-          <element name="startPage">
-            <properties>
-              <type>textfield</type>
-              <access>TRUE</access>
-              <collapsed>FALSE</collapsed>
-              <collapsible>FALSE</collapsible>
-              <disabled>FALSE</disabled>
-              <executes_submit_callback>FALSE</executes_submit_callback>
-              <maxlength>256</maxlength>
-              <multiple>FALSE</multiple>
-              <required>FALSE</required>
-              <resizable>FALSE</resizable>
-              <size>12</size>
-              <title>Start Page</title>
-              <tree>TRUE</tree>
-              <actions>
-                <create>
-                  <path>self::node()</path>
-                  <context>parent</context>
-                  <schema/>
-                  <type>xml</type>
-                  <prefix>NULL</prefix>
-                  <value>&lt;extent unit="page"&gt;&lt;start&gt;%value%&lt;/start&gt;&lt;/extent&gt;</value>
-                </create>
-                <read>
-                  <path>mods:extent[@unit = 'page']/mods:start</path>
-                  <context>parent</context>
-                </read>
-                <update>
-                  <path>self::node()</path>
-                  <context>self</context>
-                </update>
-                <delete>NULL</delete>
-              </actions>
-            </properties>
-            <children/>
-          </element>
-          <element name="endPage">
-            <properties>
-              <type>textfield</type>
-              <access>TRUE</access>
-              <collapsed>FALSE</collapsed>
-              <collapsible>FALSE</collapsible>
-              <disabled>FALSE</disabled>
-              <executes_submit_callback>FALSE</executes_submit_callback>
-              <maxlength>256</maxlength>
-              <multiple>FALSE</multiple>
-              <required>FALSE</required>
-              <resizable>FALSE</resizable>
-              <size>12</size>
-              <title>End Page</title>
-              <tree>TRUE</tree>
-              <actions>
-                <create>
-                  <path>self::node()</path>
-                  <context>parent</context>
-                  <schema/>
-                  <type>xml</type>
-                  <prefix>NULL</prefix>
-                  <value>&lt;extent unit="page"&gt;&lt;end&gt;%value%&lt;/end&gt;&lt;/extent&gt;</value>
-                </create>
-                <read>
-                  <path>mods:extent[@unit = 'page']/mods:end</path>
-                  <context>parent</context>
-                </read>
-                <update>
-                  <path>self::node()</path>
-                  <context>self</context>
-                </update>
-                <delete>NULL</delete>
-              </actions>
-            </properties>
-            <children/>
-          </element>
-        </children>
-      </element>
       <element name="subject_topics_fieldset">
         <properties>
           <type>fieldset</type>
@@ -1094,8 +915,8 @@
                       <multiple>FALSE</multiple>
                       <options>
                         <index key="">(none)</index>
-                        <local>local</local>
-                        <lcsh>lcsh</lcsh>
+                        <local>Local</local>
+                        <lcsh>LCSH</lcsh>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
@@ -1240,8 +1061,8 @@
                       <multiple>FALSE</multiple>
                       <options>
                         <index key="">(none)</index>
-                        <local>local</local>
-                        <lcsh>lcsh</lcsh>
+                        <local>Local</local>
+                        <lcsh>LCSH</lcsh>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
@@ -1309,9 +1130,9 @@
                           <executes_submit_callback>FALSE</executes_submit_callback>
                           <multiple>FALSE</multiple>
                           <options>
-                            <personal>personal</personal>
-                            <corporate>corporate</corporate>
-                            <conference>conference</conference>
+                            <personal>Personal</personal>
+                            <corporate>Corporate</corporate>
+                            <conference>Conference</conference>
                           </options>
                           <required>FALSE</required>
                           <resizable>FALSE</resizable>
@@ -1458,8 +1279,8 @@
                       <multiple>FALSE</multiple>
                       <options>
                         <index key="">(none)</index>
-                        <local>local</local>
-                        <lcsh>lcsh</lcsh>
+                        <local>Local</local>
+                        <lcsh>LCSH</lcsh>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
@@ -1606,9 +1427,9 @@
                       <executes_submit_callback>FALSE</executes_submit_callback>
                       <multiple>FALSE</multiple>
                       <options>
-                        <marccountry>marccountry</marccountry>
-                        <marcgac>marcgac</marcgac>
-                        <iso3166>iso3166</iso3166>
+                        <marccountry>MARC Country</marccountry>
+                        <marcgac>MARC GAC</marcgac>
+                        <iso3166>ISO 3166</iso3166>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
@@ -1789,8 +1610,8 @@
                           <multiple>FALSE</multiple>
                           <options>
                             <index key="">(none)</index>
-                            <local>local</local>
-                            <lcsh>lcsh</lcsh>
+                            <local>Local</local>
+                            <lcsh>LCSH</lcsh>
                           </options>
                           <required>FALSE</required>
                           <resizable>FALSE</resizable>
@@ -2307,8 +2128,8 @@
                       <multiple>FALSE</multiple>
                       <options>
                         <index key="">(none)</index>
-                        <local>local</local>
-                        <lcsh>lcsh</lcsh>
+                        <local>Local</local>
+                        <lcsh>LCSH</lcsh>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
@@ -2447,7 +2268,11 @@
                       <access>TRUE</access>
                       <collapsed>FALSE</collapsed>
                       <collapsible>FALSE</collapsible>
+                      <description>Enter dates in the format YYYY-MM-DD, YYYY or YYYY/YYYY.</description>
                       <disabled>FALSE</disabled>
+                      <element_validate>
+                        <index key="0">oclsdora_iso8601_validate</index>
+                      </element_validate>
                       <executes_submit_callback>FALSE</executes_submit_callback>
                       <maxlength>128</maxlength>
                       <multiple>FALSE</multiple>
@@ -2956,9 +2781,9 @@
                       <multiple>FALSE</multiple>
                       <options>
                         <index key="">(none)</index>
-                        <ddc>ddc</ddc>
-                        <lcc>lcc</lcc>
-                        <local>local</local>
+                        <ddc>DDC</ddc>
+                        <lcc>LCC</lcc>
+                        <local>Local</local>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
@@ -3050,25 +2875,27 @@
               <access>TRUE</access>
               <collapsed>FALSE</collapsed>
               <collapsible>FALSE</collapsible>
-              <default_value>text</default_value>
+              <default_value>(none)</default_value>
               <disabled>FALSE</disabled>
               <executes_submit_callback>FALSE</executes_submit_callback>
               <multiple>FALSE</multiple>
               <options>
-                <text>text</text>
-                <cartographic>cartographic</cartographic>
-                <index key="notated music">notated music</index>
-                <index key="sound recording">sound recording</index>
-                <index key="sound recording-musical">sound recording-musical</index>
-                <index key="sound recording-nonmusical">sound recording-nonmusical</index>
-                <index key="still image">still image</index>
-                <index key="moving image">moving image</index>
-                <index key="three dimensional object">three dimensional object</index>
-                <index key="software, multimedia">software, multimedia</index>
-                <index key="mixed material">mixed material</index>
+                <index key="">(none)</index>
+                <text>Text</text>
+                <cartographic>Cartographic</cartographic>
+                <index key="notated music">Notated Music</index>
+                <index key="sound recording">Sound Recording</index>
+                <index key="sound recording-musical">Sound Recording-Musical</index>
+                <index key="sound recording-nonmusical">Sound Recording-Nonmusical</index>
+                <index key="still image">Still Image</index>
+                <index key="moving image">Moving Image</index>
+                <index key="three dimensional object">Three Dimensional Object</index>
+                <index key="software, multimedia">Software, Multimedia</index>
+                <index key="mixed material">Mixed Material</index>
               </options>
-              <required>FALSE</required>
+              <required>TRUE</required>
               <resizable>FALSE</resizable>
+              <title>Type of Resource</title>
               <tree>TRUE</tree>
               <actions>
                 <create>
@@ -3162,58 +2989,59 @@
                       <access>TRUE</access>
                       <collapsed>FALSE</collapsed>
                       <collapsible>FALSE</collapsible>
-                      <default_value>abstract or summary</default_value>
+                      <default_value>(none)</default_value>
                       <disabled>FALSE</disabled>
                       <executes_submit_callback>FALSE</executes_submit_callback>
                       <multiple>FALSE</multiple>
                       <options>
-                        <index key="abstract or summary">abstract or summary</index>
-                        <index key="art original">art original</index>
-                        <article>article</article>
-                        <book>book</book>
-                        <calendar>calendar</calendar>
-                        <catalog>catalog</catalog>
-                        <index key="comic or graphic novel">comic or graphic novel</index>
-                        <index key="conference publication">conference publication</index>
-                        <directory>directory</directory>
-                        <index key="document (computer)">document (computer)</index>
-                        <essay>essay</essay>
-                        <filmstrip>filmstrip</filmstrip>
-                        <index key="finding aid">finding aid</index>
-                        <index key="government publication">government publication</index>
-                        <graphic>graphic</graphic>
-                        <handbook>handbook</handbook>
-                        <history>history</history>
-                        <index>index</index>
-                        <instruction>instruction</instruction>
-                        <interview>interview</interview>
-                        <issue>issue</issue>
-                        <journal>journal</journal>
-                        <letter>letter</letter>
-                        <index key="loose-leaf">loose-leaf</index>
-                        <map>map</map>
-                        <model>model</model>
-                        <newspaper>newspaper</newspaper>
-                        <index key="nonmusical sound">nonmusical sound</index>
-                        <index key="numeric data">numeric data</index>
-                        <patent>patent</patent>
-                        <periodical>periodical</periodical>
-                        <picture>picture</picture>
-                        <realia>realia</realia>
-                        <index key="remote sensing image">remote sensing image</index>
-                        <review>review</review>
-                        <script>script</script>
-                        <slide>slide</slide>
-                        <sound>sound</sound>
-                        <speech>speech</speech>
-                        <index key="standard or specification">standard or specification</index>
-                        <statistics>statistics</statistics>
-                        <index key="technical drawing">technical drawing</index>
-                        <index key="technical report">technical report</index>
-                        <thesis>thesis</thesis>
-                        <videorecording>videorecording</videorecording>
-                        <index key="web site">web site</index>
-                        <yearbook>yearbook</yearbook>
+                        <index key="">(none)</index>
+                        <index key="abstract or summary">Abstract or Summary</index>
+                        <index key="art original">Art Original</index>
+                        <article>Article</article>
+                        <book>Book</book>
+                        <calendar>Calendar</calendar>
+                        <catalog>Catalog</catalog>
+                        <index key="comic or graphic novel">Comic or Graphic Novel</index>
+                        <index key="conference publication">Conference Publication</index>
+                        <directory>Directory</directory>
+                        <index key="document (computer)">Document (Computer)</index>
+                        <essay>Essay</essay>
+                        <filmstrip>Filmstrip</filmstrip>
+                        <index key="finding aid">Finding Aid</index>
+                        <index key="government publication">Government Publication</index>
+                        <graphic>Graphic</graphic>
+                        <handbook>Handbook</handbook>
+                        <history>History</history>
+                        <index>Index</index>
+                        <instruction>Instruction</instruction>
+                        <interview>Interview</interview>
+                        <issue>Issue</issue>
+                        <journal>Journal</journal>
+                        <letter>Letter</letter>
+                        <index key="loose-leaf">Loose-Leaf</index>
+                        <map>Map</map>
+                        <model>Model</model>
+                        <newspaper>Newspaper</newspaper>
+                        <index key="nonmusical sound">Nonmusical Sound</index>
+                        <index key="numeric data">Numeric Data</index>
+                        <patent>Patent</patent>
+                        <periodical>Periodical</periodical>
+                        <picture>Picture</picture>
+                        <realia>Realia</realia>
+                        <index key="remote sensing image">Remote Sensing Image</index>
+                        <review>Review</review>
+                        <script>Script</script>
+                        <slide>Slide</slide>
+                        <sound>Sound</sound>
+                        <speech>Speech</speech>
+                        <index key="standard or specification">Standard or Specification</index>
+                        <statistics>Statistics</statistics>
+                        <index key="technical drawing">Technical Drawing</index>
+                        <index key="technical report">Technical Report</index>
+                        <thesis>Thesis</thesis>
+                        <videorecording>Videorecording</videorecording>
+                        <index key="web site">Web Site</index>
+                        <yearbook>Yearbook</yearbook>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
@@ -3313,9 +3141,9 @@
                   <multiple>FALSE</multiple>
                   <options>
                     <index key="">(none)</index>
-                    <approximate>approximate</approximate>
-                    <inferred>inferred</inferred>
-                    <questionable>questionable</questionable>
+                    <approximate>Approximate</approximate>
+                    <inferred>Inferred</inferred>
+                    <questionable>Questionable</questionable>
                   </options>
                   <required>FALSE</required>
                   <resizable>FALSE</resizable>
@@ -3349,7 +3177,7 @@
                   <access>TRUE</access>
                   <collapsed>FALSE</collapsed>
                   <collapsible>FALSE</collapsible>
-                  <description>Enter dates in the format YYYY-MM-DD.</description>
+                  <description>Enter dates in the format YYYY-MM-DD, YYYY or YYYY/YYYY.</description>
                   <disabled>FALSE</disabled>
                   <element_validate>
                     <index key="0">oclsdora_iso8601_validate</index>
@@ -3421,9 +3249,9 @@
                   <multiple>FALSE</multiple>
                   <options>
                     <index key="">(none)</index>
-                    <approximate>approximate</approximate>
-                    <inferred>inferred</inferred>
-                    <questionable>questionable</questionable>
+                    <approximate>Approximate</approximate>
+                    <inferred>Inferred</inferred>
+                    <questionable>Questionable</questionable>
                   </options>
                   <required>FALSE</required>
                   <resizable>FALSE</resizable>
@@ -3457,7 +3285,7 @@
                   <access>TRUE</access>
                   <collapsed>FALSE</collapsed>
                   <collapsible>FALSE</collapsible>
-                  <description>Enter dates in the format YYYY-MM-DD.</description>
+                  <description>Enter dates in the format YYYY-MM-DD, YYYY or YYYY/YYYY.</description>
                   <disabled>FALSE</disabled>
                   <element_validate>
                     <index key="0">oclsdora_iso8601_validate</index>
@@ -3493,7 +3321,7 @@
               <access>TRUE</access>
               <collapsed>FALSE</collapsed>
               <collapsible>FALSE</collapsible>
-              <description>Enter dates in the format YYYY-MM-DD.</description>
+              <description>Enter dates in the format YYYY-MM-DD, YYYY or YYYY/YYYY.</description>
               <disabled>FALSE</disabled>
               <element_validate>
                 <index key="0">oclsdora_iso8601_validate</index>
@@ -3534,7 +3362,7 @@
               <access>TRUE</access>
               <collapsed>FALSE</collapsed>
               <collapsible>FALSE</collapsible>
-              <description>Enter dates in the format YYYY-MM-DD.</description>
+              <description>Enter dates in the format YYYY-MM-DD, YYYY or YYYY/YYYY.</description>
               <disabled>FALSE</disabled>
               <element_validate>
                 <index key="0">oclsdora_iso8601_validate</index>
@@ -3579,10 +3407,10 @@
               <executes_submit_callback>FALSE</executes_submit_callback>
               <maxlength>256</maxlength>
               <multiple>FALSE</multiple>
-              <required>FALSE</required>
+              <required>TRUE</required>
               <resizable>FALSE</resizable>
               <size>60</size>
-              <title>Place</title>
+              <title>Place of Publication</title>
               <tree>TRUE</tree>
               <actions>
                 <create>
@@ -3682,17 +3510,24 @@
           </element>
           <element name="issuance">
             <properties>
-              <type>textfield</type>
+              <type>select</type>
               <access>TRUE</access>
               <collapsed>FALSE</collapsed>
               <collapsible>FALSE</collapsible>
               <disabled>FALSE</disabled>
               <executes_submit_callback>FALSE</executes_submit_callback>
-              <maxlength>256</maxlength>
               <multiple>FALSE</multiple>
+              <options>
+                <index key="">(none)</index>
+                <monographic>Monographic</monographic>
+                <index key="single unit">Single Unit</index>
+                <index key="multipart monograph">Multipart Monograph</index>
+                <continuing>Continuing</continuing>
+                <serial>Serial</serial>
+                <index key="integrating resource">Integrating Resource</index>
+              </options>
               <required>FALSE</required>
               <resizable>FALSE</resizable>
-              <size>60</size>
               <title>Issuance</title>
               <tree>TRUE</tree>
               <actions>
@@ -3719,17 +3554,35 @@
           </element>
           <element name="frequency">
             <properties>
-              <type>textfield</type>
+              <type>select</type>
               <access>TRUE</access>
               <collapsed>FALSE</collapsed>
               <collapsible>FALSE</collapsible>
               <disabled>FALSE</disabled>
               <executes_submit_callback>FALSE</executes_submit_callback>
-              <maxlength>256</maxlength>
               <multiple>FALSE</multiple>
+              <options>
+                <index key="">(none)</index>
+                <index key="continuously updated">Continuously Updated</index>
+                <daily>Daily</daily>
+                <semiweekly>Semiweekly</semiweekly>
+                <index key="three times a week">Three Times a Week</index>
+                <weekly>Weekly</weekly>
+                <biweekly>Biweekly</biweekly>
+                <index key="three times a month">Three Times a Month</index>
+                <semimonthly>Semimonthly</semimonthly>
+                <monthly>Monthly</monthly>
+                <bimonthly>Bimonthly</bimonthly>
+                <quarterly>Quarterly</quarterly>
+                <index key="three times a year">Three Times a Year</index>
+                <semiannual>Semiannual</semiannual>
+                <annual>Annual</annual>
+                <biennial>Biennial</biennial>
+                <triennial>Triennial</triennial>
+                <index key="completely irregular">Completely Irregular</index>
+              </options>
               <required>FALSE</required>
               <resizable>FALSE</resizable>
-              <size>60</size>
               <title>Frequency</title>
               <tree>TRUE</tree>
               <actions>
@@ -3902,48 +3755,48 @@
               <multiple>FALSE</multiple>
               <options>
                 <index key="">(none)</index>
-                <index key="chip cartridge">chip cartridge</index>
-                <collage>collage</collage>
-                <index key="computer optical disc cartridge">computer optical disc cartridge</index>
-                <diagram>diagram</diagram>
-                <drawing>drawing</drawing>
-                <index key="film cartridge">film cartridge</index>
-                <index key="film cassette">film cassette</index>
-                <index key="film reel">film reel</index>
-                <filmslip>filmslip</filmslip>
-                <index key="filmstrip cartridge">filmstrip cartridge</index>
-                <index key="filmstrip roll">filmstrip roll</index>
-                <index key="magnetic disk">magnetic disk</index>
-                <index key="magneto-optical disc">magneto-optical disc</index>
-                <map>map</map>
-                <microfiche>microfiche</microfiche>
-                <index key="microfiche cassette">microfiche cassette</index>
-                <index key="microfilm cartridge">microfilm cartridge</index>
-                <index key="microfilm cassette">microfilm cassette</index>
-                <index key="microfilm reel">microfilm reel</index>
-                <model>model</model>
-                <index key="optical disc">optical disc</index>
-                <index key="other filmstrip type">other filmstrip type</index>
-                <painting>painting</painting>
-                <photonegative>photonegative</photonegative>
-                <photoprint>photoprint</photoprint>
-                <print>print</print>
-                <index key="regular print">regular print</index>
-                <index key="remote-sensing image">remote-sensing image</index>
-                <slide>slide</slide>
-                <index key="sound cassette">sound cassette</index>
-                <index key="sound disc">sound disc</index>
-                <index key="sound-tape reel">sound-tape reel</index>
-                <index key="sound-track film">sound-track film</index>
-                <index key="tape cartridge">tape cartridge</index>
-                <index key="tape cassette">tape cassette</index>
-                <index key="tape reel">tape reel</index>
-                <index key="technical drawing">technical drawing</index>
-                <videocartridge>videocartridge</videocartridge>
-                <videocassette>videocassette</videocassette>
-                <videodisc>videodisc</videodisc>
-                <videoreel>videoreel</videoreel>
-                <view>view</view>
+                <index key="chip cartridge">Chip Cartridge</index>
+                <collage>Collage</collage>
+                <index key="computer optical disc cartridge">Computer Optical Disc Cartridge</index>
+                <diagram>Diagram</diagram>
+                <drawing>Drawing</drawing>
+                <index key="film cartridge">Film Cartridge</index>
+                <index key="film cassette">Film Cassette</index>
+                <index key="film reel">Film Reel</index>
+                <filmslip>Filmslip</filmslip>
+                <index key="filmstrip cartridge">Filmstrip Cartridge</index>
+                <index key="filmstrip roll">Filmstrip Roll</index>
+                <index key="magnetic disk">Magnetic Disk</index>
+                <index key="magneto-optical disc">Magneto-Optical Disc</index>
+                <map>Map</map>
+                <microfiche>Microfiche</microfiche>
+                <index key="microfiche cassette">Microfiche Cassette</index>
+                <index key="microfilm cartridge">Microfilm Cartridge</index>
+                <index key="microfilm cassette">Microfilm Cassette</index>
+                <index key="microfilm reel">Microfilm Reel</index>
+                <model>Model</model>
+                <index key="optical disc">Optical Disc</index>
+                <index key="other filmstrip type">Other Filmstrip Type</index>
+                <painting>Painting</painting>
+                <photonegative>Photonegative</photonegative>
+                <photoprint>Photoprint</photoprint>
+                <print>Print</print>
+                <index key="regular print">Regular Print</index>
+                <index key="remote-sensing image">Remote-Sensing Image</index>
+                <slide>Slide</slide>
+                <index key="sound cassette">Sound Cassette</index>
+                <index key="sound disc">Sound Disc</index>
+                <index key="sound-tape reel">Sound-Tape Reel</index>
+                <index key="sound-track film">Sound-Track Film</index>
+                <index key="tape cartridge">Tape Cartridge</index>
+                <index key="tape cassette">Tape Cassette</index>
+                <index key="tape reel">Tape Reel</index>
+                <index key="technical drawing">Technical Drawing</index>
+                <videocartridge>Videocartridge</videocartridge>
+                <videocassette>Videocassette</videocassette>
+                <videodisc>Videodisc</videodisc>
+                <videoreel>Videoreel</videoreel>
+                <view>View</view>
               </options>
               <required>FALSE</required>
               <resizable>FALSE</resizable>
@@ -4019,7 +3872,7 @@
               <executes_submit_callback>FALSE</executes_submit_callback>
               <multiple>FALSE</multiple>
               <options>
-                <index key="(none)">(none)</index>
+                <index key="">(none)</index>
                 <index key="application/msword">application/msword</index>
                 <index key="application/pdf">application/pdf</index>
                 <index key="application/vnd.ms-excel">application/vnd.ms-excel</index>
@@ -4073,15 +3926,16 @@
               <access>TRUE</access>
               <collapsed>FALSE</collapsed>
               <collapsible>FALSE</collapsible>
-              <default_value>born digital</default_value>
+              <default_value>(none)</default_value>
               <disabled>FALSE</disabled>
               <executes_submit_callback>FALSE</executes_submit_callback>
               <multiple>FALSE</multiple>
               <options>
-                <index key="born digital">born digital</index>
-                <index key="digitized microfilm">digitized microfilm</index>
-                <index key="digitized other analog">digitized other analog</index>
-                <index key="reformatted digital">reformatted digital</index>
+                <index key="">(none)</index>
+                <index key="born digital">Born Digital</index>
+                <index key="digitized microfilm">Digitized Microfilm</index>
+                <index key="digitized other analog">Digitized Other Analog</index>
+                <index key="reformatted digital">Reformatted Digital</index>
               </options>
               <required>TRUE</required>
               <resizable>FALSE</resizable>
@@ -4121,9 +3975,9 @@
               <multiple>FALSE</multiple>
               <options>
                 <index key="">(none)</index>
-                <access>access</access>
-                <preservation>preservation</preservation>
-                <replacement>replacement</replacement>
+                <access>Access</access>
+                <preservation>Preservation</preservation>
+                <replacement>Replacement</replacement>
               </options>
               <required>FALSE</required>
               <resizable>FALSE</resizable>
@@ -4221,21 +4075,22 @@
                       <access>TRUE</access>
                       <collapsed>FALSE</collapsed>
                       <collapsible>FALSE</collapsible>
-                      <default_value>condition</default_value>
+                      <default_value>(none)</default_value>
                       <disabled>FALSE</disabled>
                       <executes_submit_callback>FALSE</executes_submit_callback>
                       <multiple>FALSE</multiple>
                       <options>
-                        <condition>condition</condition>
-                        <marks>marks</marks>
-                        <medium>medium</medium>
-                        <organization>organization</organization>
-                        <index key="physical description">physical description</index>
-                        <index key="physical details">physical details</index>
-                        <presentation>presentation</presentation>
-                        <script>script</script>
-                        <support>support</support>
-                        <technique>technique</technique>
+                        <index key="">(none)</index>
+                        <condition>Condition</condition>
+                        <marks>Marks</marks>
+                        <medium>Medium</medium>
+                        <organization>Organization</organization>
+                        <index key="physical description">Physical Description</index>
+                        <index key="physical details">Physical Details</index>
+                        <presentation>Presentation</presentation>
+                        <script>Script</script>
+                        <support>Support</support>
+                        <technique>Technique</technique>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
@@ -4402,36 +4257,37 @@
                       <access>TRUE</access>
                       <collapsed>FALSE</collapsed>
                       <collapsible>FALSE</collapsible>
-                      <default_value>acquisition</default_value>
+                      <default_value>(none)</default_value>
                       <disabled>FALSE</disabled>
                       <executes_submit_callback>FALSE</executes_submit_callback>
                       <multiple>FALSE</multiple>
                       <options>
-                        <acquisition>acquisition</acquisition>
-                        <action>action</action>
-                        <index key="additional physical form">additional physical form</index>
-                        <admin>admin</admin>
-                        <content>content</content>
-                        <index key="creation/production credits">creation/production credits</index>
-                        <course>course</course>
-                        <date>date</date>
-                        <numbering>numbering</numbering>
-                        <index key="date/sequential designation">date/sequential designation</index>
-                        <index key="original location">original location</index>
-                        <index key="original version">original version</index>
-                        <other>other</other>
-                        <ownership>ownership</ownership>
-                        <performers>performers</performers>
-                        <program>program</program>
-                        <publications>publications</publications>
-                        <reproduction>reproduction</reproduction>
-                        <restriction>restriction</restriction>
-                        <index key="source dimensions">source dimensions</index>
-                        <index key="source identifier">source identifier</index>
-                        <index key="source note">source note</index>
-                        <index key="statement of responsibility">statement of responsibility</index>
-                        <index key="system details">system details</index>
-                        <venue>venue</venue>
+                        <index key="">(none)</index>
+                        <acquisition>Acquisition</acquisition>
+                        <action>Action</action>
+                        <index key="additional physical form">Additional Physical Form</index>
+                        <admin>Admin</admin>
+                        <content>Content</content>
+                        <index key="creation/production credits">Creation/Production Credits</index>
+                        <course>Course</course>
+                        <date>Date</date>
+                        <numbering>Numbering</numbering>
+                        <index key="date/sequential designation">Date/Sequential Designation</index>
+                        <index key="original location">Original Location</index>
+                        <index key="original version">Original Version</index>
+                        <other>Other</other>
+                        <ownership>Ownership</ownership>
+                        <performers>Performers</performers>
+                        <program>Program</program>
+                        <publications>Publications</publications>
+                        <reproduction>Reproduction</reproduction>
+                        <restriction>Restriction</restriction>
+                        <index key="source dimensions">Source Dimensions</index>
+                        <index key="source identifier">Source Identifier</index>
+                        <index key="source note">Source Note</index>
+                        <index key="statement of responsibility">Statement of Responsibility</index>
+                        <index key="system details">System Details</index>
+                        <venue>Venue</venue>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
@@ -4998,11 +4854,11 @@
                       <executes_submit_callback>FALSE</executes_submit_callback>
                       <multiple>FALSE</multiple>
                       <options>
-                        <lccn>local</lccn>
-                        <doi>doi</doi>
-                        <isbn>isbn</isbn>
-                        <isni>isni</isni>
-                        <issn>issn</issn>
+                        <lccn>Local</lccn>
+                        <doi>DOI</doi>
+                        <isbn>ISBN</isbn>
+                        <isni>ISNI</isni>
+                        <issn>ISSN</issn>
                       </options>
                       <required>FALSE</required>
                       <resizable>FALSE</resizable>
